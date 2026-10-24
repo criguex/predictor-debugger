@@ -51,9 +51,10 @@ def fingerprint(entries, verdicts):
     return f"{h[:4]}-{h[4:8]}-{h[8:]}"
 
 
-def regenerate(out, splits, report):
+def regenerate(out, splits, report, existing=False):
     entries = manifest()
-    generate(out, splits)
+    if not existing:
+        generate(out, splits)
     rows = []
     for split in splits:
         for name in SPLITS[split][0]:
@@ -79,10 +80,11 @@ def main():
     parser.add_argument("--regenerate", type=Path, metavar="DIR", help="regenerate the dataset into DIR and compare with MANIFEST")
     parser.add_argument("--splits", nargs="+", default=["val", "test", "ood"])
     parser.add_argument("--report", type=Path, default=Path("regeneration.json"))
+    parser.add_argument("--existing", action="store_true", help="with --regenerate: compare files already in DIR without generating")
     args = parser.parse_args()
     print(f"predictor-debugger verify · {platform.system()} {platform.machine()} · Python {platform.python_version()} · numpy {np.__version__}")
     if args.regenerate:
-        return 0 if regenerate(args.regenerate, args.splits, args.report) else 1
+        return 0 if regenerate(args.regenerate, args.splits, args.report, args.existing) else 1
     entries = manifest()
     problems = check_files(entries, ("thresholds.json", "vendor/"))
     thresholds = json.loads((ROOT / "thresholds.json").read_text())["thresholds"]
