@@ -103,3 +103,7 @@ A 32³ periodic box, smooth random initial fields, a short horizon, one architec
 ## Files
 
 `DESIGN.md` (pre-registration and amendments) · `thresholds.json` · `MANIFEST.sha256` (dataset, predictions, checkpoints, thresholds) · `environment.json` · `results/{mac,war,guerra}/` (per-step statistics, verdicts, environments) · `results/comparison.json` · `results/fp_diagnostic.json` · `ledgers/` · `logs/` · `verify.py`. Data, predictions and checkpoints (about 5 GB) are not in git; their hashes are in `MANIFEST.sha256`.
+
+## Note added on review (2026-10-24)
+
+`logs/war/verify_saved.log` and `logs/guerra/verify_saved.log` show the fingerprint **1A51-56CE-3D2F**, not EEC9-09E0-F77D. Those first remote runs read the partial `MANIFEST.sha256` that had been copied to each machine, and the fingerprint includes the input hashes listed in the manifest. The verdicts in those logs are the same. Rerun with the full manifest (`verify_saved_full_manifest.log`), both machines give EEC9-09E0-F77D. Both logs are kept as produced.
