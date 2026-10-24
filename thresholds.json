@@ -1,0 +1,73 @@
+{
+  "decides_H1_H4": "thresholds",
+  "environment": {
+    "date_utc": "2026-10-24T21:28:53.471538+00:00",
+    "device": "CPU",
+    "hostname": "Mac-mini-de-CRIS.local",
+    "machine": "arm64",
+    "numpy": "1.26.4",
+    "numpy_finfo": {
+      "float32": {
+        "eps": 1.1920928955078125e-07,
+        "max": 3.4028234663852886e+38,
+        "tiny": 1.1754943508222875e-38
+      },
+      "float64": {
+        "eps": 2.220446049250313e-16,
+        "max": 1.7976931348623157e+308,
+        "tiny": 2.2250738585072014e-308
+      }
+    },
+    "os": "macOS-26.2-arm64-arm-64bit",
+    "processor": "Apple M2 Pro",
+    "python": "3.9.6 (default, Mar  6 2026, 16:22:43) \n[Clang 21.0.0 (clang-2100.0.123.102)]",
+    "solver_sha256": "87d3372edf646da285731f5144551c2a626987f3718c6985b47a6c816f3bdc50",
+    "torch": null
+  },
+  "float64_only_secondary": {
+    "D1": 1e-12,
+    "D2": 0.003313909822371258,
+    "D3": 0.08350146174183613
+  },
+  "rule": "tau = 10 x max over validation one-step steps of the statistic, floor 1e-12; flagged if value > tau or non-finite",
+  "steps_per_predictor": 200,
+  "thresholds": {
+    "D1": 8.320117051685382e-07,
+    "D2": 0.0033139113713079316,
+    "D3": 0.08350147140648448
+  },
+  "validation_data_sha256": {
+    "160": "b331a6341306425ed837840942701a785625ad46a34f8c0fcc2be01100f8f5a7",
+    "161": "0b608af6729467518cecc8228be440c2a94e80248ed018e855e443ab275a3425",
+    "162": "7df06898eb742a31ff4cab848465438775ec4ea729bda9dd51b811d0e83d892a",
+    "163": "b3697b73ac2e0364631f2a56f0809e400e5ff00256d14f8ffd9b692d8e87e80d",
+    "164": "4897e5aa9853a91e1375beedffe586e94621afb41567ee0a2e958382e875d330",
+    "165": "81ed38396723d29f4562176fd25dc95fc0a1a7fe7f21c6b4fc768755cc4cd6da",
+    "166": "f1b0a9a1c54bc04e326acd4e19c8571917a5f0728fe6630c2c1e2b5915625082",
+    "167": "9f2138849d1f93f7c2b8852718ce6ea1bddfa9638264c4ae5ffc2b472a80b5e5",
+    "168": "3af0cde07e1b554a3e2b75580997cae3456ba783cc9c0f083b19b7c0b7581d05",
+    "169": "dc7af42a27a2f701993bff6af6cf18cb45ab93255ddf5d7f5d0d3626bdeba472",
+    "170": "e081e188d8196014bec30f7ee60953fb0c74da727dd0fd424750c334dded4df7",
+    "171": "f4815b16aa703dd96a06684784da012c06216e91c0f38c26ef03e65b12ac5bea",
+    "172": "51b39de55cdb8c48fdfba959da446f23385ea9aacd4bc0f70d2d8335bac105ca",
+    "173": "1fd4a2484d2294f1c0b1bd1a094bbac42b9dd818524297f7bda6758dbb3ae7dc",
+    "174": "c690e72fd4bcf2b43e6dd5386cd4e7b8db3379724ae440754a7eaae103e361ae",
+    "175": "4c08d3df43832e23804c5ad9abb66996749f2b97d7f4a1d3b7e7ed6ea9c00349",
+    "176": "3b6fb103d743342d2c169e8ce13918f3a5981566f894286c13d87f323deee28f",
+    "177": "0363734c18823391ba65956ad52a7cced1a6494f60b1040102bc369def4a0420",
+    "178": "6886690aa9062bfc3b3277ce5aaf46944a8fee00266201a4661fe3afebbce3a0",
+    "179": "f6451e0d753b7e26725ee0c9af03a45569e8bb6a17714015161cb302cbe62962"
+  },
+  "validation_max": {
+    "P0": {
+      "D1": 8.020575017707993e-16,
+      "D2": 0.0003313909822371258,
+      "D3": 0.008350146174183613
+    },
+    "P0f32": {
+      "D1": 8.320117051685383e-08,
+      "D2": 0.00033139113713079316,
+      "D3": 0.008350147140648448
+    }
+  }
+}
