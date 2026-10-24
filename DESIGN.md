@@ -84,4 +84,13 @@ When the results exist, the pipeline is wrapped as a skill (`debug-predictor-fis
 
 ## Amendments
 
-None.
+### 1 · 2026-10-24, before any data exists: numerical precision
+
+Reason: the network is trained on Apple's MPS, which has no float64. A float32 field has relative rounding near 1.2e-7, while the threshold rule above calibrates D1 on a float64 solver whose divergence sits near 1e-15. As written, D1 would flag a perfect float32 predictor for rounding, not for physics.
+
+- Datasets, reference trajectories, predictions and all debugger arithmetic are float64 (`<f8`, FFTs in complex128). Predictor outputs are cast to float64 before any check.
+- New control **P0f32**: the reference solver's output rounded to float32 and cast back. It is the best a float32 predictor could do.
+- Thresholds for D1–D3 are τ = 10 × the validation maximum over P0 **and** P0f32. A second table reports the float64-only thresholds (from P0 alone), to show how much resolution float32 costs. Only the first set decides H1–H4.
+- New hypothesis **H1b**: P0f32 flagged on ≤ 5 % of test steps.
+- `environment.json` records `numpy.finfo` and `torch.finfo` for every dtype used. A statistic below 10 × the machine epsilon of the data's dtype is reported as "at the precision floor", not as a measured value.
+- float64 is enough: the solver's own controls already resolve errors of 1e-15 to 1e-17, while the D2 and D3 effects expected here are 1e-3 or larger. Extended precision is not used.
