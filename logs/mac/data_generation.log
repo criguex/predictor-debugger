@@ -1,0 +1,5 @@
+train: 160 trajectories in 311.0 s
+val: 20 trajectories in 39.5 s
+test: 40 trajectories in 79.2 s
+ood: 21 trajectories in 41.5 s
+exit=0
