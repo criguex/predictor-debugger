@@ -115,3 +115,11 @@ Reason: the author asked to run on more than one machine, with logs and evidence
 ### 3 · 2026-10-24, before any data exists: GUERRA's disk
 
 GUERRA's C: went from 7.4 GB to 86.7 GB free after the author approved removing old installers and one game (log kept outside this repo). The 20 GB condition in amendment 2 no longer limits it. GUERRA therefore receives the full set of saved predictions and runs the debugger on every split, like WAR. It still does not train; seeds 0 and 1 stay on WAR.
+
+### 4 · 2026-10-24, before any data exists: one-step versus rollout
+
+Reason: the design said "trajectories of 10 steps" without saying whether predictors start each step from the reference state.
+
+- **H1–H4, E1, the ledgers and the confusion table use one-step predictions**: for every reference pair (u(t), u(t+Δ)) in a split, each predictor receives the reference u(t) and returns its u₁. That gives 10 steps per trajectory: 200 validation steps, 400 test steps.
+- **E2 (exploratory, no pass/fail)**: P2 rolled out on its own outputs for 10 steps from each test initial state, with D1–D4 per step, to show how violations accumulate.
+- The numpy version is pinned to 1.26.4 on all three machines, matching what WAR and GUERRA already have. The dataset is generated on the Mac; WAR and GUERRA also regenerate it from the seeds, and the maximum absolute difference against the Mac's files is recorded per file. A nonzero difference is reported, not hidden; the Mac's files remain the canonical ones.
