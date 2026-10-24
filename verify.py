@@ -100,7 +100,7 @@ def main():
         saved = json.loads((ROOT / "results" / args.compare / "verdicts.json").read_text())
     verdicts = summarize(records, thresholds)
     for name, h in verdicts["hypotheses"].items():
-        print(f"  {name}  {h['predictor']:<6} {h['check']:<4} {h['flagged']:>4}/{h['steps']}  {h['criterion']:<15} {'PASS' if h['pass'] else 'FAIL'}")
+        print(f"  {name:<4} {h['predictor']:<6} {h['check']:<4} {h['flagged']:>4}/{h['steps']}  {h['criterion']:<15} {'PASS' if h['pass'] else 'FAIL'}")
     same = verdict_digest(verdicts) == verdict_digest(saved)
     print(f"  verdicts equal to saved results/{args.saved or args.compare}/verdicts.json: {same}")
     for line in problems:
