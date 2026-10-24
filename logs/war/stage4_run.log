@@ -1,0 +1,16 @@
+
+C:\ADN\pd-exp>cd /d C:\ADN\pd-exp 
+
+C:\ADN\pd-exp>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp>echo start s b 24/10/2026 16:29:12,13 
+start s b 24/10/2026 16:29:12,13
+
+C:\ADN\pd-exp>C:\ADN\voz\venv\Scripts\python.exe verify.py --regenerate regen --splits train val test ood --report logs\war\regeneration.json  1>logs\war\regeneration.log 2>&1 
+
+C:\ADN\pd-exp>C:\ADN\voz\venv\Scripts\python.exe -c "import json,sys; r=json.load(open('logs/war/regeneration.json')); sys.exit(0 if r['identical']==r['files'] else 3)" 
+
+C:\ADN\pd-exp>if errorlevel 1 (echo regeneration differs, stopping   & exit /b 3 ) 
+regeneration differs, stopping 

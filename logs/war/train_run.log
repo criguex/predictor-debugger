@@ -1,0 +1,18 @@
+
+C:\ADN\pd-exp>cd /d C:\ADN\pd-exp 
+
+C:\ADN\pd-exp>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp>echo start s b 24/10/2026 16:53:23,33 
+start s b 24/10/2026 16:53:23,33
+
+C:\ADN\pd-exp>nvidia-smi  1>logs\war\nvidia_smi_before_training.txt 
+
+C:\ADN\pd-exp>C:\ADN\voz\venv\Scripts\python.exe -m pd.train --seed 0 --log logs\war\train_s0.json  1>logs\war\train_s0.log 2>&1 
+
+C:\ADN\pd-exp>C:\ADN\voz\venv\Scripts\python.exe -m pd.train --seed 1 --log logs\war\train_s1.json  1>logs\war\train_s1.log 2>&1 
+
+C:\ADN\pd-exp>echo done s b 24/10/2026 16:57:33,33 
+done s b 24/10/2026 16:57:33,33
