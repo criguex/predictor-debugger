@@ -94,3 +94,20 @@ Reason: the network is trained on Apple's MPS, which has no float64. A float32 f
 - New hypothesis **H1b**: P0f32 flagged on ≤ 5 % of test steps.
 - `environment.json` records `numpy.finfo` and `torch.finfo` for every dtype used. A statistic below 10 × the machine epsilon of the data's dtype is reported as "at the precision floor", not as a measured value.
 - float64 is enough: the solver's own controls already resolve errors of 1e-15 to 1e-17, while the D2 and D3 effects expected here are 1e-3 or larger. Extended precision is not used.
+
+### 2 · 2026-10-24, before any data exists: three machines, discrepancy and false-positive ledgers
+
+Reason: the author asked to run on more than one machine, with logs and evidence for everything and an explicit trail of false positives.
+
+| Machine | Hardware | Role |
+| --- | --- | --- |
+| Mac mini (M2 Pro, 16 GB) | CPU float64, MPS float32 | Generates the canonical dataset and reference (P0, P0f32), computes thresholds, runs the debugger on every predictor |
+| WAR | RTX 5070 12 GB, CUDA, torch 2.7.0+cu128 | Trains P2 (float32, CUDA) and runs the debugger again, independently, on the same saved predictions |
+| GUERRA | RTX 4060 Laptop 8 GB, torch 2.6.0+cu124, 7.4 GB free on C: | Light role only: recomputes P0 for the test split from the seeds and re-runs the debugger on the test predictions. No dataset copy, no training, while its disk stays under 20 GB free |
+
+- The canonical files are the Mac's. Each transfer is listed with source and destination SHA-256 in `logs/transfers.tsv`; a mismatch stops the run.
+- On WAR and GUERRA, existing Python environments are used read-only (no package installs into them); all files go to a new folder outside any versioned tree, and are deleted after their hashes and logs are copied back.
+- **Discrepancy ledger** (`ledgers/discrepancies.jsonl`): any test step whose verdict differs between machines, with the three values, thresholds and machine. Discrepancies are reported, never resolved by picking a machine.
+- **False-positive ledger** (`ledgers/false_positives.jsonl`): every flag raised on P0 or P0f32, which are correct by construction, with machine, check, value, threshold, seed and step. Each entry stays open until it is explained by evidence (for example, a value at the precision floor); an unexplained entry is reported as open.
+- **Exploratory confusion table for P2** (no pass/fail): a step counts as truly wrong when D4 > 1 % relative error, fixed now. Report flagged-and-wrong, flagged-but-not-wrong (debugger false positives), wrong-but-not-flagged (misses), and neither, per check and per machine.
+- A second training of P2 with torch seed 1 on WAR is reported alongside seed 0, to show how much the debugger's view of P2 depends on the training run. It does not affect H1–H4.
