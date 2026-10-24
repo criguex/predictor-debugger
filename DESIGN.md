@@ -111,3 +111,7 @@ Reason: the author asked to run on more than one machine, with logs and evidence
 - **False-positive ledger** (`ledgers/false_positives.jsonl`): every flag raised on P0 or P0f32, which are correct by construction, with machine, check, value, threshold, seed and step. Each entry stays open until it is explained by evidence (for example, a value at the precision floor); an unexplained entry is reported as open.
 - **Exploratory confusion table for P2** (no pass/fail): a step counts as truly wrong when D4 > 1 % relative error, fixed now. Report flagged-and-wrong, flagged-but-not-wrong (debugger false positives), wrong-but-not-flagged (misses), and neither, per check and per machine.
 - A second training of P2 with torch seed 1 on WAR is reported alongside seed 0, to show how much the debugger's view of P2 depends on the training run. It does not affect H1–H4.
+
+### 3 · 2026-10-24, before any data exists: GUERRA's disk
+
+GUERRA's C: went from 7.4 GB to 86.7 GB free after the author approved removing old installers and one game (log kept outside this repo). The 20 GB condition in amendment 2 no longer limits it. GUERRA therefore receives the full set of saved predictions and runs the debugger on every split, like WAR. It still does not train; seeds 0 and 1 stay on WAR.
