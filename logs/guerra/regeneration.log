@@ -1,0 +1,5 @@
+predictor-debugger verify · Windows AMD64 · Python 3.12.3 · numpy 1.26.4
+val: 20 trajectories in 246.7 s
+test: 40 trajectories in 499.4 s
+ood: 21 trajectories in 266.5 s
+regenerated 81 files, 0 bit-identical to MANIFEST

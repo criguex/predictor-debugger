@@ -1,0 +1,20 @@
+{
+  "discrepancies": 0,
+  "false_positives": {
+    "explained": 0,
+    "open": 126
+  },
+  "machines": [
+    "guerra",
+    "mac",
+    "war"
+  ],
+  "max_abs_difference_between_machines": {
+    "D1": 2.7755575615628914e-17,
+    "D2": 0.0,
+    "D3": 4.440892098500626e-16,
+    "D4": 0.0,
+    "E0": 0.0,
+    "E1": 0.0
+  }
+}

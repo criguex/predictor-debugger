@@ -1,0 +1,36 @@
+{
+  "cuda": "12.8",
+  "cuda_device": "NVIDIA GeForce RTX 5070",
+  "date_utc": "2026-10-24T22:22:59.835274+00:00",
+  "device": "CPU",
+  "hostname": "War",
+  "machine": "AMD64",
+  "numpy": "1.26.4",
+  "numpy_finfo": {
+    "float32": {
+      "eps": 1.1920928955078125e-07,
+      "max": 3.4028234663852886e+38,
+      "tiny": 1.1754943508222875e-38
+    },
+    "float64": {
+      "eps": 2.220446049250313e-16,
+      "max": 1.7976931348623157e+308,
+      "tiny": 2.2250738585072014e-308
+    }
+  },
+  "os": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "solver_sha256": "87d3372edf646da285731f5144551c2a626987f3718c6985b47a6c816f3bdc50",
+  "torch": "2.7.0+cu128",
+  "torch_finfo": {
+    "torch.float32": {
+      "eps": 1.1920928955078125e-07,
+      "tiny": 1.1754943508222875e-38
+    },
+    "torch.float64": {
+      "eps": 2.220446049250313e-16,
+      "tiny": 2.2250738585072014e-308
+    }
+  }
+}

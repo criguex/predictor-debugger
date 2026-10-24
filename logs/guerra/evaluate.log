@@ -1,0 +1,8 @@
+val: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 152.1 s
+test: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 303.8 s
+ood: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 161.7 s
+H1: P0 any 0/400 PASS
+H1b: P0f32 any 0/400 PASS
+H2: P3a D1 400/400 PASS
+H3: P3b D2 400/400 PASS
+H4: P1 D3 400/400 PASS
