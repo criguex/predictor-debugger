@@ -1,0 +1,87 @@
+# Pre-registration · Physics debugger for a learned flow predictor
+
+Written before any dataset, model or prediction exists. Changes after this commit are amendments: they go at the end with date, reason and commit, and none may be made after the test split has been evaluated.
+
+## Question
+
+A debugger made only of physical checks, with thresholds fixed in advance, receives the output of a flow predictor. Does it reject predictors known to be wrong, accept the exact solver, and flag where a learned predictor breaks the physics?
+
+The object under test is the **debugger**, not the neural network. A poor network is an acceptable result; a debugger that cannot tell the controls apart is a failure.
+
+## System
+
+| Item | Value |
+| --- | --- |
+| Equations | 3D incompressible Navier–Stokes, no forcing, periodic box [0, 2π]³ |
+| Grid | n = 32, 2/3 dealiasing |
+| Viscosity | ν = 0.05 |
+| Reference solver | `SpectralFlow` from `fluid_solver.py`, SHA-256 `87d3372edf646da285731f5144551c2a626987f3718c6985b47a6c816f3bdc50` (scientific-qa-evidence `d815cd9`), imported unchanged; RK4, dt = 0.01 |
+| Initial conditions | Random divergence-free fields, energy spectrum E(k) ∝ k⁴ exp(−2 (k/k₀)²), random phases from `numpy.random.default_rng(seed)`, projected and rescaled to energy 0.125 |
+| Prediction step | Δ = 0.1 (10 solver steps); trajectories of 10 steps, t ∈ [0, 1] |
+
+The initial-condition generator is new code in its own module; the solver file is not edited.
+
+## Splits
+
+| Split | Seeds | k₀ | Use |
+| --- | --- | --- | --- |
+| Train | 0–159 | 3 | Fit the network |
+| Validation | 160–179 | 3 | Early stopping and threshold calibration only |
+| Test | 180–219 | 3 | Evaluated once, at the end |
+| Out of distribution | 300–319 with k₀ = 5, plus Taylor–Green | 5 / — | Reported separately, no pass/fail |
+
+## Predictors
+
+| Id | Predictor | Role |
+| --- | --- | --- |
+| P0 | Reference solver | Positive control: must be accepted |
+| P1 | Persistence, u(t+Δ) = u(t) | Naive baseline: ignores the dynamics |
+| P2 | Learned Fourier neural operator | The predictor under study |
+| P3a | P2 output plus a gradient field ∇φ with ‖∇φ‖ = 5 % of ‖u‖ | Negative control: breaks incompressibility |
+| P3b | P2 output scaled by 1.05 | Negative control: injects energy |
+
+P2 is fixed now: 4 Fourier layers, 8 modes per axis, width 24, GELU, MSE loss on u(t+Δ), Adam, learning rate 1e-3, batch 8, at most 100 epochs, early stopping on validation loss with patience 10, torch seed 0. No physics term in the loss, so the debugger's checks are not trained into the model. No architecture or hyperparameter search.
+
+## Debugger checks
+
+Computed spectrally on each predicted step (u₀ → u₁), with E the kinetic energy, Z the enstrophy and N(u) the solver's right-hand side.
+
+| Id | Check | Statistic |
+| --- | --- | --- |
+| D1 | Incompressibility | ‖div u₁‖₂ / ‖∇u₁‖₂ |
+| D2 | Energy budget | \|E(u₁) − E(u₀) + ν Δ (Z(u₀) + Z(u₁))\| / E(u₀), plus a hard rule: E(u₁) > E(u₀) is a violation |
+| D3 | Momentum residual | ‖(u₁ − u₀)/Δ − ½ (N(u₀) + N(u₁))‖₂ / ‖N(u₀)‖₂ |
+| D4 | Error against the reference | ‖u₁ − u₁^ref‖₂ / ‖u₁^ref‖₂, **not a debugger check**: used only to judge the debugger |
+
+**Threshold rule, fixed now:** for D1, D2 and D3, τ = 10 × the maximum of the statistic for P0 over all validation steps, with a floor of 1e-12. Thresholds are computed once, written to `thresholds.json` with its hash, and not changed afterwards. A step is flagged if any check exceeds its threshold, or if any value is NaN or infinite. A NaN is never a pass.
+
+## Hypotheses and criteria (test split)
+
+| Id | Hypothesis | Pass if |
+| --- | --- | --- |
+| H1 | The exact solver is accepted | P0 flagged on ≤ 5 % of test steps |
+| H2 | Broken incompressibility is caught | P3a flagged by D1 on ≥ 95 % of test steps |
+| H3 | Energy injection is caught | P3b flagged by D2 on ≥ 95 % of test steps |
+| H4 | Ignoring the dynamics is caught | P1 flagged by D3 on ≥ 95 % of test steps |
+| E1 | Exploratory | For P2: share of steps flagged per check, and Spearman ρ between D3 and D4 over test steps. Reported with no pass/fail |
+
+Any failure of H1–H4 is reported as a failure of the debugger. No threshold, split or check is changed to turn a failure into a pass.
+
+## Evidence
+
+- Every input, dataset, checkpoint, prediction and result file is listed with SHA-256 in `MANIFEST.sha256`.
+- `environment.json`: Python, numpy, torch versions, device (CPU or MPS), OS, date.
+- Raw logs of each stage are kept as produced, in `logs/`.
+- `verify.py` recomputes D1–D4 from the saved predictions, re-applies `thresholds.json`, recomputes H1–H4 and prints a fingerprint. Rerunning from scratch must reproduce the verdicts; bit-exact network weights are not required across devices.
+
+## Limits stated in advance
+
+A 32³ periodic box, smooth random initial fields, short horizon, one architecture, no forcing. This says nothing about Clay's problem, about OpenAI's proof, or about real turbulence. A debugger that passes here is evidence about these checks on this setup only.
+
+## Packaging
+
+When the results exist, the pipeline is wrapped as a skill (`debug-predictor-fisica`) with two modes: re-verify the saved evidence, and rerun from scratch and compare. The skill is written after the results, and does not change them.
+
+## Amendments
+
+None.
