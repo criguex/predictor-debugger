@@ -1,1 +1,3 @@
 2026-10-25T01:13:13Z pilot on round-1 data finished (round2/pilot/); pre-registration commit next; no round-2 evaluation data exists
+2026-10-25T01:13:30Z pre-registration 35cd38f pushed to origin/ronda-2; calibration starts
+2026-10-25T01:14:02Z thresholds computed on round-1 validation: D2p=1.192e-6 (float32 floor), G=7.818e-5; round-1 D1-D3 reproduced exactly
