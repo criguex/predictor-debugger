@@ -1,0 +1,112 @@
+rollout r4roll P0 4300 done 280s
+rollout r4roll P0 4305 done 280s
+rollout r4roll P0 4310 done 280s
+rollout r4roll P0 4315 done 280s
+rollout r4roll P0 4320 done 280s
+rollout r4roll P0 4325 done 556s
+rollout r4roll P0 4330 done 557s
+rollout r4roll P0 4335 done 557s
+rollout r4roll P0f32 4300 done 620s
+rollout r4roll P0f32 4305 done 623s
+rollout r4roll P0f32 4310 done 897s
+rollout r4roll P0f32 4315 done 897s
+rollout r4roll P0f32 4320 done 899s
+rollout r4roll P0f32 4325 done 961s
+rollout r4roll P0f32 4330 done 965s
+rollout r4roll P0f32 4335 done 1237s
+rollout r4roll P1 4300 done 1237s
+rollout r4roll P1 4305 done 1237s
+rollout r4roll P1 4310 done 1281s
+rollout r4roll P1 4315 done 1286s
+rollout r4roll P1 4320 done 1534s
+rollout r4roll P1 4325 done 1537s
+rollout r4roll P1 4330 done 1555s
+rollout r4roll P1 4335 done 1600s
+rollout r4roll P2s0 4300 done 1607s
+rollout r4roll P2s0 4305 done 1853s
+rollout r4roll P2s0 4310 done 1857s
+rollout r4roll P2s0 4315 done 1874s
+rollout r4roll P2s0 4320 done 1919s
+rollout r4roll P2s0 4325 done 1928s
+rollout r4roll P2s0 4330 done 2172s
+rollout r4roll P2s0 4335 done 2176s
+rollout r4roll P2s1 4300 done 2193s
+rollout r4roll P2s1 4305 done 2238s
+rollout r4roll P2s1 4310 done 2248s
+rollout r4roll P2s1 4315 done 2491s
+rollout r4roll P2s1 4320 done 2495s
+rollout r4roll P2s1 4325 done 2511s
+rollout r4roll P2s1 4330 done 2557s
+rollout r4roll P2s1 4335 done 2568s
+rollout r4roll P2ge4 4300 done 2809s
+rollout r4roll P2ge4 4305 done 2815s
+rollout r4roll P2ge4 4310 done 2831s
+rollout r4roll P2ge4 4315 done 2875s
+rollout r4roll P2ge4 4320 done 2890s
+rollout r4roll P2ge4 4325 done 3128s
+rollout r4roll P2ge4 4330 done 3134s
+rollout r4roll P2ge4 4335 done 3150s
+rollout r4roll P2gbest 4300 done 3196s
+rollout r4roll P2gbest 4305 done 3210s
+rollout r4roll P2gbest 4310 done 3447s
+rollout r4roll P2gbest 4315 done 3453s
+rollout r4roll P2gbest 4320 done 3470s
+rollout r4roll P2gbest 4325 done 3515s
+rollout r4roll P2gbest 4330 done 3530s
+rollout r4roll P2gbest 4335 done 3764s
+sweep r4test 4000 done 3764s
+sweep r4test 4005 done 3764s
+sweep r4test 4010 done 3764s
+sweep r4test 4015 done 3764s
+sweep r4test 4020 done 3764s
+sweep r4test 4025 done 3764s
+sweep r4test 4030 done 3764s
+sweep r4test 4035 done 3764s
+sweep r4ood5 4100 done 3764s
+sweep r4ood5 4105 done 3764s
+sweep r4ood5 4110 done 3764s
+sweep r4ood5 4115 done 3764s
+sweep r4ood6 4200 done 3764s
+sweep r4ood6 4205 done 3764s
+sweep r4ood6 4210 done 3769s
+sweep r4ood6 4215 done 3772s
+onestep val P0 done 3790s
+onestep r4test P0 done 3792s
+onestep r4test P0f32 done 3832s
+onestep r4test P1 done 3836s
+onestep r4test P2s0 done 3840s
+onestep r4test P2s1 done 3859s
+onestep r4test P3a done 3861s
+onestep r4test P3b done 3900s
+onestep r4ood5 P0 done 3900s
+onestep r4ood5 P0f32 done 3900s
+onestep r4ood5 P1 done 3900s
+onestep r4ood5 P2s0 done 3900s
+onestep r4ood5 P2s1 done 3904s
+onestep r4ood5 P3a done 3909s
+onestep r4ood5 P3b done 3926s
+onestep r4ood6 P0 done 3929s
+onestep r4ood6 P0f32 done 3934s
+onestep r4ood6 P1 done 3938s
+onestep r4ood6 P2s0 done 3943s
+onestep r4ood6 P2s1 done 3959s
+onestep r4ood6 P3a done 3962s
+onestep r4ood6 P3b done 3966s
+H1: P0 any PASS 
+H1b: P0f32 any PASS 
+H2: P3a D1 PASS 
+H3: P3b D2 PASS 
+H4: P1 D3 PASS 
+H5: P0, P0f32 D2p PASS 
+H6: P3b D2p_mag PASS 
+H7: P2s0, P2s1 Spearman(G, D4) PASS PASS
+H9: P0, P0f32 D2pp PASS 
+H10: P0 + graded energy error floor(D2pp_mag) vs floor(D2p_mag) PASS 
+H10b: P3b D2pp_mag PASS 
+H11: P0, P0f32 Gp PASS 
+H12: P1, P3a, P3b Gp PASS 
+H13: P2s0, P2s1 Spearman(Gp, D4) PASS PASS
+H17: P2s0, P2s1, P2ge4, P2gbest within-step Spearman(E_fp3, D4) PASS PASS
+H18: P2s0, P2s1, P2ge4, P2gbest median E_fp3/D4 per step PASS 
+H19: P0, P0f32, P1 rollouts E_fp3 alarm PASS 
+H20: P2s0+P2s1+P2ge4+P2gbest alarm E_fp3 >= 0.05 before D4 > 0.05 PASS 
