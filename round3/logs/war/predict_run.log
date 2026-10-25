@@ -1,0 +1,16 @@
+
+C:\ADN\pd-exp-r3>cd /d C:\ADN\pd-exp-r3 
+
+C:\ADN\pd-exp-r3>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp-r3>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp-r3>echo start s b 24/10/2026 23:39:19,33 
+start s b 24/10/2026 23:39:19,33
+
+C:\ADN\pd-exp-r3>nvidia-smi  1>round3\logs\war\nvidia_smi_before.txt 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe round3\predict.py  1>round3\logs\war\predict.log 2>&1 
+
+C:\ADN\pd-exp-r3>echo done s b 24/10/2026 23:39:30,51 
+done s b 24/10/2026 23:39:30,51

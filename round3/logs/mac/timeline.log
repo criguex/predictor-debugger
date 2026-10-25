@@ -2,3 +2,9 @@
 2026-10-25T04:30:01Z pilot finished (round3/pilot/), smoke run on seen data done; pre-registration commit next; no round-3 data, prediction or threshold exists
 2026-10-25T04:30:03Z pre-registration 8fcbd16 pushed to origin/ronda-3; calibration starts
 2026-10-25T04:31:24Z thresholds computed on round-1 validation: D2pp=1.192e-6 (float32 floor), Gp=1.192e-6 (float32 floor), G6=7.106e-7; round-1 D1-D3 and round-2 D2p/G reproduced exactly
+2026-10-25T04:31:25Z thresholds 9c01efb pushed; round-3 data generation starts (r3test, r3ood5, r3ood6, r3roll)
+2026-10-25T04:36:41Z round-3 data generated
+2026-10-25T04:37:01Z C: free before copying: see transfers; created C:\ADN\pd-exp-r3 on war and guerra
+2026-10-25T04:37:11Z C: free before copying: war 60023259136 B, guerra 92441038848 B
+2026-10-25T04:39:18Z launched war round3/tools/war_predict.cmd (P2s0/P2s1 one-step on r3 splits, rollouts of P2s0, P2s1, P2ge4, P2gbest on r3roll)
+2026-10-25T04:50:16Z WAR predictions pulled (round3/preds), hashes verified
