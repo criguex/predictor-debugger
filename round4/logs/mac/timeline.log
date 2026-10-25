@@ -3,3 +3,5 @@
 2026-10-25T14:15:45Z ronda-4 (no commits yet) fast-forwarded to origin/main 8724243 (docs-only round-3 change) at the coordinator's request
 2026-10-25T14:18:20Z pilot rollouts finished (5600 steps, 4067 s, 5 processes); summary next
 2026-10-25T14:20:58Z pilot summary done; pre-registration commit next; no round-4 data, prediction or threshold exists
+2026-10-25T14:21:01Z pre-registration 5d1925b pushed to origin/ronda-4; calibration starts
+2026-10-25T14:26:04Z thresholds computed on round-1 validation: E_alarm=0.05 (L; validation max of E_fp3 6.1e-8 over 400 control rollout steps); round-1/2/3 thresholds reproduced exactly
