@@ -1,0 +1,35 @@
+onestep val done 68s
+onestep r3test done 460s
+onestep r3ood5 done 460s
+onestep r3ood6 done 522s
+rollout P0 done 583s
+rollout P0f32 done 961s
+rollout P1 done 961s
+rollout P2s0 done 988s
+rollout P2s1 done 1243s
+rollout P2ge4 done 1269s
+rollout P2gbest done 1525s
+sweep r3test done 1727s
+sweep r3ood5 done 1754s
+sweep r3ood6 done 1956s
+/private/tmp/claude-501/-Users-cris/c84a7b42-de3c-463d-abfc-7c8b58c450f4/scratchpad/venv-r3/lib/python3.9/site-packages/numpy/lib/function_base.py:2897: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/private/tmp/claude-501/-Users-cris/c84a7b42-de3c-463d-abfc-7c8b58c450f4/scratchpad/venv-r3/lib/python3.9/site-packages/numpy/lib/function_base.py:2898: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+H1: P0 any PASS 
+H1b: P0f32 any PASS 
+H2: P3a D1 PASS 
+H3: P3b D2 PASS 
+H4: P1 D3 PASS 
+H5: P0, P0f32 D2p PASS 
+H6: P3b D2p_mag PASS 
+H7: P2s0, P2s1 Spearman(G, D4) PASS PASS
+H9: P0, P0f32 D2pp PASS 
+H10: P0 + graded energy error floor(D2pp_mag) vs floor(D2p_mag) PASS 
+H10b: P3b D2pp_mag PASS 
+H11: P0, P0f32 Gp PASS 
+H12: P1, P3a, P3b Gp PASS 
+H13: P2s0, P2s1 Spearman(Gp, D4) PASS PASS
+H14: P2s0, P2s1, P2ge4, P2gbest mean over steps of within-step Spearman(A_k, D4_k) FAIL FAIL
+H15: P2s0+P2s1+P2ge4+P2gbest alarm A_k >= 0.05 before D4 > 0.05 PASS PASS
+H16: P0, P0f32, P1 rollouts A alarm and Gp PASS 

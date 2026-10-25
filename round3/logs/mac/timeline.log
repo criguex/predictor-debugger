@@ -8,3 +8,10 @@
 2026-10-25T04:37:11Z C: free before copying: war 60023259136 B, guerra 92441038848 B
 2026-10-25T04:39:18Z launched war round3/tools/war_predict.cmd (P2s0/P2s1 one-step on r3 splits, rollouts of P2s0, P2s1, P2ge4, P2gbest on r3roll)
 2026-10-25T04:50:16Z WAR predictions pulled (round3/preds), hashes verified
+2026-10-25T04:50:47Z launched war round3/tools/remote_evaluate.cmd war 6
+2026-10-25T04:50:56Z Mac evaluation starts (--jobs 2)
+2026-10-25T04:56:30Z launched guerra round3/tools/remote_evaluate.cmd guerra 6
+2026-10-25T04:56:57Z relaunched war remote_evaluate.cmd war 6 (first launch passed quoted arguments and ran nothing; log kept as evaluate_run_quoting_failed.log)
+2026-10-25T04:56:59Z relaunched guerra remote_evaluate.cmd guerra 6 (first launch passed quoted arguments and ran nothing; log kept as evaluate_run_quoting_failed.log)
+2026-10-25T05:24:47Z Mac evaluation done
+2026-10-25T05:26:38Z Mac results committed; verify --saved mac fingerprint 6319-537B-7167; full recompute starts
