@@ -14,3 +14,6 @@
 2026-10-25T14:53:07Z launched guerra round4/tools/remote_evaluate.cmd guerra 8
 2026-10-25T14:53:31Z Mac evaluation starts (--jobs 5)
 2026-10-25T16:01:49Z Mac evaluation done
+2026-10-25T16:04:04Z Mac results committed 6d69535; verify --saved mac fingerprint 681D-143B-64A3; full recompute starts (--jobs 5)
+2026-10-25T16:04:35Z merged origin/main f47c5a5 (CI workflow, round5/KIT.md; no code in pd/round2-4) into ronda-4 at the coordinator's request
+2026-10-25T17:12:39Z Mac full recompute done: verdicts equal to saved, fingerprint 681D-143B-64A3

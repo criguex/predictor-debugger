@@ -1,0 +1,115 @@
+predictor-debugger round-4 verify · Darwin arm64 · Python 3.9.6 · numpy 1.26.4
+rollout r4roll P0 4300 done 279s
+rollout r4roll P0 4305 done 280s
+rollout r4roll P0 4310 done 280s
+rollout r4roll P0 4315 done 280s
+rollout r4roll P0 4320 done 280s
+rollout r4roll P0 4325 done 557s
+rollout r4roll P0 4330 done 558s
+rollout r4roll P0 4335 done 558s
+rollout r4roll P0f32 4300 done 621s
+rollout r4roll P0f32 4305 done 621s
+rollout r4roll P0f32 4310 done 898s
+rollout r4roll P0f32 4315 done 899s
+rollout r4roll P0f32 4320 done 899s
+rollout r4roll P0f32 4325 done 961s
+rollout r4roll P0f32 4330 done 962s
+rollout r4roll P0f32 4335 done 1240s
+rollout r4roll P1 4300 done 1240s
+rollout r4roll P1 4305 done 1240s
+rollout r4roll P1 4310 done 1280s
+rollout r4roll P1 4315 done 1281s
+rollout r4roll P1 4320 done 1536s
+rollout r4roll P1 4325 done 1537s
+rollout r4roll P1 4330 done 1559s
+rollout r4roll P1 4335 done 1600s
+rollout r4roll P2s0 4300 done 1600s
+rollout r4roll P2s0 4305 done 1855s
+rollout r4roll P2s0 4310 done 1857s
+rollout r4roll P2s0 4315 done 1877s
+rollout r4roll P2s0 4320 done 1919s
+rollout r4roll P2s0 4325 done 1919s
+rollout r4roll P2s0 4330 done 2174s
+rollout r4roll P2s0 4335 done 2176s
+rollout r4roll P2s1 4300 done 2196s
+rollout r4roll P2s1 4305 done 2238s
+rollout r4roll P2s1 4310 done 2238s
+rollout r4roll P2s1 4315 done 2494s
+rollout r4roll P2s1 4320 done 2495s
+rollout r4roll P2s1 4325 done 2516s
+rollout r4roll P2s1 4330 done 2557s
+rollout r4roll P2s1 4335 done 2558s
+rollout r4roll P2ge4 4300 done 2813s
+rollout r4roll P2ge4 4305 done 2814s
+rollout r4roll P2ge4 4310 done 2835s
+rollout r4roll P2ge4 4315 done 2876s
+rollout r4roll P2ge4 4320 done 2876s
+rollout r4roll P2ge4 4325 done 3132s
+rollout r4roll P2ge4 4330 done 3134s
+rollout r4roll P2ge4 4335 done 3153s
+rollout r4roll P2gbest 4300 done 3195s
+rollout r4roll P2gbest 4305 done 3196s
+rollout r4roll P2gbest 4310 done 3451s
+rollout r4roll P2gbest 4315 done 3452s
+rollout r4roll P2gbest 4320 done 3473s
+rollout r4roll P2gbest 4325 done 3514s
+rollout r4roll P2gbest 4330 done 3515s
+rollout r4roll P2gbest 4335 done 3769s
+sweep r4test 4000 done 3769s
+sweep r4test 4005 done 3769s
+sweep r4test 4010 done 3769s
+sweep r4test 4015 done 3769s
+sweep r4test 4020 done 3769s
+sweep r4test 4025 done 3769s
+sweep r4test 4030 done 3769s
+sweep r4test 4035 done 3769s
+sweep r4ood5 4100 done 3769s
+sweep r4ood5 4105 done 3769s
+sweep r4ood5 4110 done 3769s
+sweep r4ood5 4115 done 3769s
+sweep r4ood6 4200 done 3769s
+sweep r4ood6 4205 done 3769s
+sweep r4ood6 4210 done 3769s
+sweep r4ood6 4215 done 3770s
+onestep val P0 done 3775s
+onestep r4test P0 done 3795s
+onestep r4test P0f32 done 3837s
+onestep r4test P1 done 3837s
+onestep r4test P2s0 done 3837s
+onestep r4test P2s1 done 3843s
+onestep r4test P3a done 3864s
+onestep r4test P3b done 3905s
+onestep r4ood5 P0 done 3905s
+onestep r4ood5 P0f32 done 3905s
+onestep r4ood5 P1 done 3905s
+onestep r4ood5 P2s0 done 3905s
+onestep r4ood5 P2s1 done 3905s
+onestep r4ood5 P3a done 3905s
+onestep r4ood5 P3b done 3911s
+onestep r4ood6 P0 done 3932s
+onestep r4ood6 P0f32 done 3939s
+onestep r4ood6 P1 done 3939s
+onestep r4ood6 P2s0 done 3939s
+onestep r4ood6 P2s1 done 3944s
+onestep r4ood6 P3a done 3964s
+onestep r4ood6 P3b done 3970s
+  H1   any                                        0/400  PASS
+  H1b  any                                        0/400  PASS
+  H2   D1                                       400/400  PASS
+  H3   D2                                       400/400  PASS
+  H4   D3                                       400/400  PASS
+  H5   D2p                                        0/1600  PASS
+  H6   D2p_mag                                  400/400  PASS
+  H7   Spearman(G, D4)                        rho=0.936 [0.926, 0.945] rho=0.975 [0.970, 0.978] | D3 -0.167 0.062  PASS
+  H9   D2pp                                       0/1600  PASS
+  H10  floor(D2pp_mag) vs floor(D2p_mag)      r4test/+:3.2e-06<0.00032 r4test/-:3.2e-06<0.00032 r4ood5/+:0.0001<0.01 r4ood5/-:0.0001<0.01 r4ood6/+:0.00032<0.01 r4ood6/-:0.00032<0.01  PASS
+  H10b D2pp_mag                                 400/400  PASS
+  H11  Gp                                         0/1600  PASS
+  H12  Gp                                      2400/2400  PASS
+  H13  Spearman(Gp, D4)                       rho=0.934 [0.924, 0.943] rho=0.974 [0.969, 0.977] | D3 -0.167 0.062  PASS
+  H17  within-step Spearman(E_fp3, D4)        P2s0=0.992[0.981] k20=0.984 dA=+0.160[+0.086] dC=+0.284[+0.162] P2s1=0.989[0.973] k20=0.977 dA=+0.121[+0.067] dC=+0.160[+0.097] P2ge4=0.987[0.968] k20=0.974 dA=+0.147[+0.082] dC=+0.448[+0.258] P2gbest=0.997[0.991] k20=0.996 dA=+0.191[+0.110] dC=+0.198[+0.123]  PASS
+  H18  median E_fp3/D4 per step               P2s0=1.001-1.003 P2s1=0.983-1.002 P2ge4=0.999-1.003 P2gbest=1.004-1.016  PASS
+  H19  E_fp3 alarm                            alarms={'P0': 0, 'P0f32': 0} new_fp=0 P1_on_time=1.0  PASS
+  H20  alarm E_fp3 >= 0.05 before D4 > 0.05   on_time=0.9875 premature=0.000 crossing=160 | A on_time=1.0  PASS
+  verdicts equal to saved round4/results/mac/verdicts.json: True
+  fingerprint: 681D-143B-64A3
