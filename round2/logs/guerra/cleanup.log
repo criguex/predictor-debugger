@@ -1,0 +1,8 @@
+utc_before 2026-10-25T02:50:23Z
+files=739 bytes=5652857958
+free_before=86413578240
+removed C:\ADN\pd-exp-r2
+removed C:\Users\Public\pd_r2_status.ps1
+free_after=92069441536
+utc_after 2026-10-25T02:50:24Z
+removed C:\Users\Public\pd_r2_cleanup.ps1

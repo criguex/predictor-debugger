@@ -1,0 +1,12 @@
+predictor-debugger round-2 verify · Windows AMD64 · Python 3.12.10 · numpy 1.26.4
+  H1   P0               any                 0/400  share <= 0.05                            PASS
+  H1b  P0f32            any                 0/400  share <= 0.05                            PASS
+  H2   P3a              D1                400/400  share >= 0.95                            PASS
+  H3   P3b              D2                400/400  share >= 0.95                            PASS
+  H4   P1               D3                400/400  share >= 0.95                            PASS
+  H5   P0, P0f32        D2p                 0/1600  0 flagged in every group                 PASS
+  H6   P3b              D2p_mag           400/400  share >= 0.95                            PASS
+  H7   P2s0, P2s1       Spearman(G, D4)  rho=0.934 [0.924, 0.942] rho=0.974 [0.968, 0.979]  rho >= 0.8 and CI95 low >= 0.6 for both  PASS
+  H8   P2ge1+P2ge2+P2ge Spearman(G, D4)  rho=0.999 [0.998, 0.999]  rho >= 0.9 and CI95 low >= 0.8           PASS
+  verdicts equal to saved round2/results/war/verdicts.json: True
+  fingerprint: D506-F58F-3838

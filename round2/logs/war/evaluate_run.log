@@ -1,0 +1,20 @@
+
+C:\ADN\pd-exp-r2>cd /d C:\ADN\pd-exp-r2 
+
+C:\ADN\pd-exp-r2>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp-r2>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp-r2>echo start s b 24/10/2026 20:37:14,93 
+start s b 24/10/2026 20:37:14,93
+
+C:\ADN\pd-exp-r2>C:\ADN\voz\venv\Scripts\python.exe tests\test_checks.py  1>round2\logs\war\test_checks.log 2>&1 
+
+C:\ADN\pd-exp-r2>C:\ADN\voz\venv\Scripts\python.exe round2\verify.py --regenerate round2\regen --report round2\logs\war\regeneration.json  1>round2\logs\war\regeneration.log 2>&1 
+
+C:\ADN\pd-exp-r2>C:\ADN\voz\venv\Scripts\python.exe -m round2.evaluate --machine war  1>round2\logs\war\evaluate.log 2>&1 
+
+C:\ADN\pd-exp-r2>C:\ADN\voz\venv\Scripts\python.exe round2\verify.py --saved war  1>round2\logs\war\verify_saved.log 2>&1 
+
+C:\ADN\pd-exp-r2>echo done s b 24/10/2026 21:03:37,62 
+done s b 24/10/2026 21:03:37,62

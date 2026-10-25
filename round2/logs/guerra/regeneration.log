@@ -1,0 +1,5 @@
+predictor-debugger round-2 verify · Windows AMD64 · Python 3.12.3 · numpy 1.26.4
+r2test: 40 trajectories in 503.2 s
+r2ood5: 20 trajectories in 251.3 s
+r2ood6: 20 trajectories in 229.1 s
+regenerated 80 files, 0 bit-identical to round2/MANIFEST.sha256

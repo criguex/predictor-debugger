@@ -1,0 +1,14 @@
+val: P0, P0f32 in 57.7 s
+r2test: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 403.4 s
+r2ood5: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 201.9 s
+r2ood6: P0, P0f32, P1, P2s0, P2s1, P3a, P3b in 202.0 s
+r2test: P2ge1, P2ge2, P2ge4, P2ge8, P2gbest in 288.9 s
+H1: P0 any 0 PASS
+H1b: P0f32 any 0 PASS
+H2: P3a D1 400 PASS
+H3: P3b D2 400 PASS
+H4: P1 D3 400 PASS
+H5: P0, P0f32 D2p 0 PASS
+H6: P3b D2p_mag 400 PASS
+H7: P2s0, P2s1 Spearman(G, D4) None PASS
+H8: P2ge1+P2ge2+P2ge4+P2ge8+P2gbest Spearman(G, D4) 0.9986522286630571 PASS

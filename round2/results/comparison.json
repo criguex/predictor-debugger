@@ -1,0 +1,66 @@
+{
+  "discrepancies": 0,
+  "false_positives_by_check": {
+    "D1": 0,
+    "D2": 600,
+    "D2p": 0,
+    "D3": 0,
+    "G": 120
+  },
+  "hypotheses_by_machine": {
+    "guerra": {
+      "H1": true,
+      "H1b": true,
+      "H2": true,
+      "H3": true,
+      "H4": true,
+      "H5": true,
+      "H6": true,
+      "H7": true,
+      "H8": true
+    },
+    "mac": {
+      "H1": true,
+      "H1b": true,
+      "H2": true,
+      "H3": true,
+      "H4": true,
+      "H5": true,
+      "H6": true,
+      "H7": true,
+      "H8": true
+    },
+    "war": {
+      "H1": true,
+      "H1b": true,
+      "H2": true,
+      "H3": true,
+      "H4": true,
+      "H5": true,
+      "H6": true,
+      "H7": true,
+      "H8": true
+    }
+  },
+  "machines": [
+    "guerra",
+    "mac",
+    "war"
+  ],
+  "max_abs_difference_between_machines": {
+    "D1": 2.7755575615628914e-17,
+    "D2": 0.0,
+    "D2h": 0.0,
+    "D2p": 0.0,
+    "D3": 4.440892098500626e-16,
+    "D3p": 2.220446049250313e-16,
+    "D4": 0.0,
+    "D4c": 1.3877787807814457e-17,
+    "D4s": 8.326672684688674e-17,
+    "E0": 0.0,
+    "E1": 0.0,
+    "G": 6.938893903907228e-18,
+    "Gc": 1.3877787807814457e-17,
+    "Gs": 6.938893903907228e-18
+  }
+}
