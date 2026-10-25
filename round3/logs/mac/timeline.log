@@ -18,3 +18,5 @@
 2026-10-25T06:00:14Z Mac full recompute done
 2026-10-25T11:49:37Z resumed after a permission-classifier outage (06:10-11:45); WAR and GUERRA runs had finished; results and logs pulled with hashes
 2026-10-25T11:55:57Z ledgers built: 0 discrepancies, 960 control flags (none from the round-3 debugger); r1/r2/r3 fingerprints verified on war and guerra
+2026-10-25T11:56:19Z remote folders C:\ADN\pd-exp-r3 removed on war and guerra (round3/logs/*/cleanup.log)
+2026-10-25T11:57:38Z RESULTS written
