@@ -1,0 +1,3 @@
+2026-10-25T01:19:50Z launched war round2/tools/war_predict.cmd (P2s0/P2s1 inference on round-2 splits, graded training seed 2)
+2026-10-25T01:37:14Z launched war round2/tools/remote_evaluate.cmd war
+2026-10-25T01:37:15Z launched guerra round2/tools/remote_evaluate.cmd guerra
