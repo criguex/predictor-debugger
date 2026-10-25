@@ -1,0 +1,7 @@
+val done 60s
+r2test done 488s
+r2ood5 done 550s
+r2ood6 done 614s
+rollouts done 739s
+sweep r2test done 1192s
+sweep r2ood6 done 1418s

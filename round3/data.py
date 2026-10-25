@@ -1,0 +1,46 @@
+import argparse
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from pd import SPLITS, environment, flow, np, write_json
+from pd.data import advance, generate
+from pd.initial import initial_state
+from round3 import HORIZON, NEW_SPLITS, R3, ROLL
+
+
+def long_trajectory(solver, name, k0):
+    states = [initial_state(solver, name, k0)]
+    for _ in range(HORIZON):
+        states.append(advance(solver, states[-1]))
+    return np.array(states, dtype=np.float64)
+
+
+def generate3(out):
+    generate(out, NEW_SPLITS)
+    solver = flow()
+    names, k0 = SPLITS[ROLL]
+    (out / ROLL).mkdir(parents=True, exist_ok=True)
+    start = time.perf_counter()
+    for name in names:
+        states = long_trajectory(solver, name, k0)
+        if not np.all(np.isfinite(states)):
+            raise FloatingPointError(f"non-finite reference: {ROLL}/{name}")
+        np.save(out / ROLL / f"{name}.npy", states)
+    print(f"{ROLL}: {len(names)} trajectories of {HORIZON} steps in {time.perf_counter() - start:.1f} s", flush=True)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=R3 / "data")
+    parser.add_argument("--environment", type=Path)
+    args = parser.parse_args()
+    if args.environment:
+        write_json(args.environment, environment())
+    generate3(args.out)
+
+
+if __name__ == "__main__":
+    main()
