@@ -4,5 +4,4 @@ __pycache__/
 data/
 preds/
 checkpoints/
-round2/r1
 round2/regen/
