@@ -1,0 +1,5 @@
+2026-10-25T13:02:45Z round4 worktree ronda-4 created from main 1ae9910 at ~/Projects/sqe-private/predictor-debugger-r4; links to rounds 1-3 data/checkpoints (untracked, excluded); no round-4 data exists
+2026-10-25T13:10:21Z pilot starts on already-seen data only: round-3 r3roll (seeds 3300-3339, evaluated in round 3) with round-3 WAR predictions of P2s0/P2s1/P2ge4/P2gbest and P0/P0f32/P1 controls; criteria H17-H20 were given by the author before the pilot; no round-4 data exists
+2026-10-25T14:15:45Z ronda-4 (no commits yet) fast-forwarded to origin/main 8724243 (docs-only round-3 change) at the coordinator's request
+2026-10-25T14:18:20Z pilot rollouts finished (5600 steps, 4067 s, 5 processes); summary next
+2026-10-25T14:20:58Z pilot summary done; pre-registration commit next; no round-4 data, prediction or threshold exists
