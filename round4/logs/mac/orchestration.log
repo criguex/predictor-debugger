@@ -1,0 +1,2 @@
+2026-10-25T14:35:47Z inputs pushed to war (first push: 163/220 failed because the remote folders did not exist before tools/remote.py was there; second push 220/220 verified, both kept in transfers.tsv); launched war round4/tools/war_predict.cmd (P2s0/P2s1 one-step on r4 splits; rollouts of P2s0, P2s1, P2ge4, P2gbest on r4roll)
+2026-10-25T14:38:31Z guerra: tools/remote.py placed by plain scp so the hashed push could create folders, then all 216 inputs pushed and verified (remote.py included)

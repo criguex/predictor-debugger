@@ -5,3 +5,8 @@
 2026-10-25T14:20:58Z pilot summary done; pre-registration commit next; no round-4 data, prediction or threshold exists
 2026-10-25T14:21:01Z pre-registration 5d1925b pushed to origin/ronda-4; calibration starts
 2026-10-25T14:26:04Z thresholds computed on round-1 validation: E_alarm=0.05 (L; validation max of E_fp3 6.1e-8 over 400 control rollout steps); round-1/2/3 thresholds reproduced exactly
+2026-10-25T14:26:06Z thresholds 4cc1d06 pushed; round-4 data generation starts (r4test, r4ood5, r4ood6, r4roll)
+2026-10-25T14:31:23Z round-4 data generated
+2026-10-25T14:31:54Z created C:\ADN\pd-exp-r4 on war and guerra; C: free before copying: war free 60069216256 guerra free 92357791744 B
+2026-10-25T14:35:47Z inputs pushed to war (first push: 163/220 failed because the remote folders did not exist before tools/remote.py was there; second push 220/220 verified, both kept in transfers.tsv); launched war round4/tools/war_predict.cmd (P2s0/P2s1 one-step on r4 splits; rollouts of P2s0, P2s1, P2ge4, P2gbest on r4roll)
+2026-10-25T14:52:53Z WAR predictions pulled (round4/preds, 324 files incl. logs), hashes verified, added to round4/MANIFEST.sha256; manifest pushed to war, manifest+preds to guerra

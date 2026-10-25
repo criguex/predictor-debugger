@@ -1,0 +1,40 @@
+Sun Oct 25 09:35:49 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.88                 KMD Version: 610.88        CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5070      WDDM  |   00000000:01:00.0  On |                  N/A |
+|  0%   37C    P8              8W /  250W |    3296MiB /  12227MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            1788    C+G   C:\Windows\System32\Taskmgr.exe       N/A      |
+|    0   N/A  N/A            2012    C+G   C:\Windows\System32\dwm.exe           N/A      |
+|    0   N/A  N/A            2272    C+G   ...\codex-computer-use-swift.exe      N/A      |
+|    0   N/A  N/A            3500    C+G   ...les\TeamViewer\TeamViewer.exe      N/A      |
+|    0   N/A  N/A            4516    C+G   ....0.4283.62\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A            9736    C+G   ...2txyewy\CrossDeviceResume.exe      N/A      |
+|    0   N/A  N/A           10052    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           10192    C+G   ...indows\System32\ShellHost.exe      N/A      |
+|    0   N/A  N/A           10768    C+G   ...yb3d8bbwe\WindowsTerminal.exe      N/A      |
+|    0   N/A  N/A           11752    C+G   ..._cw5n1h2txyewy\SearchHost.exe      N/A      |
+|    0   N/A  N/A           11776    C+G   ...y\StartMenuExperienceHost.exe      N/A      |
+|    0   N/A  N/A           14828    C+G   ....0.4283.62\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           17872    C+G   ...2p2nqsd0c76g0\app\ChatGPT.exe      N/A      |
+|    0   N/A  N/A           18384    C+G   ...onsoftware\RadeonSoftware.exe      N/A      |
+|    0   N/A  N/A           19840    C+G   ...xyewy\ShellExperienceHost.exe      N/A      |
+|    0   N/A  N/A           20876    C+G   ...t\Edge\Application\msedge.exe      N/A      |
+|    0   N/A  N/A           20892    C+G   ...yb3d8bbwe\Notepad\Notepad.exe      N/A      |
+|    0   N/A  N/A           21100    C+G   ...8bbwe\PhoneExperienceHost.exe      N/A      |
+|    0   N/A  N/A           21436    C+G   ...2p2nqsd0c76g0\app\ChatGPT.exe      N/A      |
+|    0   N/A  N/A           22368      C   ...s\Python\Python310\python.exe      N/A      |
+|    0   N/A  N/A           22392      C   ...s\Python\Python310\python.exe      N/A      |
++-----------------------------------------------------------------------------------------+
