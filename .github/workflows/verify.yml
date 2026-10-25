@@ -1,0 +1,37 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  saved:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - script: verify.py
+            fingerprint: EEC9-09E0-F77D
+            tests: tests/test_checks.py
+          - script: round2/verify.py
+            fingerprint: D506-F58F-3838
+            tests: round2/test_checks2.py
+          - script: round3/verify.py
+            fingerprint: 6319-537B-7167
+            tests: round3/test_checks3.py
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.18"
+      - run: uv run --locked python -c "import platform, sys, numpy; print(platform.platform(), sys.version.split()[0], numpy.__version__)"
+      - run: uv run --locked python ${{ matrix.tests }}
+      - name: fingerprint on the saved results of each machine
+        run: |
+          for machine in mac war guerra; do
+            uv run --locked ${{ matrix.script }} --saved "$machine" | tee "out-$machine.txt"
+            grep -q "fingerprint: ${{ matrix.fingerprint }}" "out-$machine.txt"
+          done
