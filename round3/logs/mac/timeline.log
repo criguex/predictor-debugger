@@ -1,2 +1,4 @@
 2026-10-25T04:02:54Z round3 worktree ronda-3 created from main cf248f5; pilot on already-seen data (round-1 val/test rollouts, round-2 r2test/r2ood5/r2ood6) starts; no round-3 data exists
 2026-10-25T04:30:01Z pilot finished (round3/pilot/), smoke run on seen data done; pre-registration commit next; no round-3 data, prediction or threshold exists
+2026-10-25T04:30:03Z pre-registration 8fcbd16 pushed to origin/ronda-3; calibration starts
+2026-10-25T04:31:24Z thresholds computed on round-1 validation: D2pp=1.192e-6 (float32 floor), Gp=1.192e-6 (float32 floor), G6=7.106e-7; round-1 D1-D3 and round-2 D2p/G reproduced exactly
