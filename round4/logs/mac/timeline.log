@@ -17,3 +17,5 @@
 2026-10-25T16:04:04Z Mac results committed 6d69535; verify --saved mac fingerprint 681D-143B-64A3; full recompute starts (--jobs 5)
 2026-10-25T16:04:35Z merged origin/main f47c5a5 (CI workflow, round5/KIT.md; no code in pd/round2-4) into ronda-4 at the coordinator's request
 2026-10-25T17:12:39Z Mac full recompute done: verdicts equal to saved, fingerprint 681D-143B-64A3
+2026-10-25T19:02:23Z environment change on guerra made by the coordinator (not by this run, no data change): the 8 evaluate workers (parent PID 20892) had been placed by Windows on E-cores 12-15 at ~50 % CPU each; affinity of the 9 processes set to 0x0FFF (P-cores, logical 0-11) and 'powercfg /powerthrottling disable' for C:\Program Files\Python312\python.exe; script at C:\ADN\pcores.ps1 (outside the round-4 folder)
+2026-10-25T19:39:31Z WAR run finished 19:35Z; results and logs pulled with hashes; WAR fingerprints r1 EEC9-09E0-F77D r2 D506-F58F-3838 r3 6319-537B-7167 r4 681D-143B-64A3

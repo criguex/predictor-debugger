@@ -1,0 +1,24 @@
+C:\ADN\voz\venv\Lib\site-packages\numpy\lib\function_base.py:2897: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+C:\ADN\voz\venv\Lib\site-packages\numpy\lib\function_base.py:2898: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+predictor-debugger round-3 verify · Windows AMD64 · Python 3.12.10 · numpy 1.26.4
+  H1   any                                    0/400  PASS
+  H1b  any                                    0/400  PASS
+  H2   D1                                   400/400  PASS
+  H3   D2                                   400/400  PASS
+  H4   D3                                   400/400  PASS
+  H5   D2p                                    0/1600  PASS
+  H6   D2p_mag                              400/400  PASS
+  H7   Spearman(G, D4)                    rho=0.938 [0.930, 0.944] rho=0.980 [0.976, 0.982] | D3 -0.181 0.062  PASS
+  H9   D2pp                                   0/1600  PASS
+  H10  floor(D2pp_mag) vs floor(D2p_mag)  r3test/+:3.2e-06<0.00032 r3test/-:3.2e-06<0.00032 r3ood5/+:0.0001<0.01 r3ood5/-:0.0001<0.01 r3ood6/+:0.00032<0.01 r3ood6/-:0.00032<0.01  PASS
+  H10b D2pp_mag                             400/400  PASS
+  H11  Gp                                     0/1600  PASS
+  H12  Gp                                  2400/2400  PASS
+  H13  Spearman(Gp, D4)                   rho=0.936 [0.928, 0.943] rho=0.979 [0.975, 0.981] | D3 -0.181 0.062  PASS
+  H14  mean over steps of within-step Spe P2s0=0.800[0.657]/C=0.785 P2s1=0.815[0.692]/C=0.851 P2ge4=0.747[0.535]/C=0.810 P2gbest=0.635[0.413]/C=0.654  FAIL
+  H15  alarm A_k >= 0.05 before D4 > 0.05 on_time=1.0 premature=0.000 crossing=160  PASS
+  H16  A alarm and Gp                     alarms={'P0': 0, 'P0f32': 0} Gp={'P0': 0, 'P0f32': 0} P1_on_time=1.0  PASS
+  verdicts equal to saved round3/results/war/verdicts.json: True
+  fingerprint: 6319-537B-7167
