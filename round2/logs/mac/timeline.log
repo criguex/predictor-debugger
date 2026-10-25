@@ -1,3 +1,7 @@
 2026-10-25T01:13:13Z pilot on round-1 data finished (round2/pilot/); pre-registration commit next; no round-2 evaluation data exists
 2026-10-25T01:13:30Z pre-registration 35cd38f pushed to origin/ronda-2; calibration starts
 2026-10-25T01:14:02Z thresholds computed on round-1 validation: D2p=1.192e-6 (float32 floor), G=7.818e-5; round-1 D1-D3 reproduced exactly
+2026-10-25T01:14:08Z round-2 data generation starts (r2test, r2ood5, r2ood6)
+2026-10-25T01:16:44Z round-2 data generated
+2026-10-25T01:29:25Z P2 preds and graded set pulled from WAR, P3a/P3b built, MANIFEST written; Mac evaluation starts
+2026-10-25T01:40:04Z Mac evaluation done (all H1-H8 pass on Mac)
