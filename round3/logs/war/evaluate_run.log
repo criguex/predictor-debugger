@@ -1,0 +1,24 @@
+
+C:\ADN\pd-exp-r3>cd /d C:\ADN\pd-exp-r3 
+
+C:\ADN\pd-exp-r3>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp-r3>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp-r3>echo start s b 24/10/2026 23:56:58,95 
+start s b 24/10/2026 23:56:58,95
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe tests\test_checks.py  1>round3\logs\war\test_checks.log 2>&1 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe round2\test_checks2.py  1>round3\logs\war\test_checks2.log 2>&1 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe round3\test_checks3.py  1>round3\logs\war\test_checks3.log 2>&1 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe round3\verify.py --regenerate round3\regen --report round3\logs\war\regeneration.json  1>round3\logs\war\regeneration.log 2>&1 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe -m round3.evaluate --machine war --jobs 6  1>round3\logs\war\evaluate.log 2>&1 
+
+C:\ADN\pd-exp-r3>C:\ADN\voz\venv\Scripts\python.exe round3\verify.py --saved war  1>round3\logs\war\verify_saved.log 2>&1 
+
+C:\ADN\pd-exp-r3>echo done dom 25/10/2026  1:08:15,53 
+done dom 25/10/2026  1:08:15,53

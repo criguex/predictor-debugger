@@ -1,0 +1,35 @@
+onestep val done 308s
+onestep r3test done 2123s
+onestep r3ood5 done 2123s
+onestep r3ood6 done 2123s
+rollout P0 done 2123s
+rollout P0f32 done 2193s
+rollout P1 done 2193s
+rollout P2s0 done 2193s
+rollout P2s1 done 2376s
+rollout P2ge4 done 2420s
+rollout P2gbest done 2506s
+sweep r3test done 3436s
+sweep r3ood5 done 3436s
+sweep r3ood6 done 3436s
+C:\ADN\voz\venv\Lib\site-packages\numpy\lib\function_base.py:2897: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+C:\ADN\voz\venv\Lib\site-packages\numpy\lib\function_base.py:2898: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+H1: P0 any PASS 
+H1b: P0f32 any PASS 
+H2: P3a D1 PASS 
+H3: P3b D2 PASS 
+H4: P1 D3 PASS 
+H5: P0, P0f32 D2p PASS 
+H6: P3b D2p_mag PASS 
+H7: P2s0, P2s1 Spearman(G, D4) PASS PASS
+H9: P0, P0f32 D2pp PASS 
+H10: P0 + graded energy error floor(D2pp_mag) vs floor(D2p_mag) PASS 
+H10b: P3b D2pp_mag PASS 
+H11: P0, P0f32 Gp PASS 
+H12: P1, P3a, P3b Gp PASS 
+H13: P2s0, P2s1 Spearman(Gp, D4) PASS PASS
+H14: P2s0, P2s1, P2ge4, P2gbest mean over steps of within-step Spearman(A_k, D4_k) FAIL FAIL
+H15: P2s0+P2s1+P2ge4+P2gbest alarm A_k >= 0.05 before D4 > 0.05 PASS PASS
+H16: P0, P0f32, P1 rollouts A alarm and Gp PASS 

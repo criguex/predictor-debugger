@@ -15,3 +15,6 @@
 2026-10-25T04:56:59Z relaunched guerra remote_evaluate.cmd guerra 6 (first launch passed quoted arguments and ran nothing; log kept as evaluate_run_quoting_failed.log)
 2026-10-25T05:24:47Z Mac evaluation done
 2026-10-25T05:26:38Z Mac results committed; verify --saved mac fingerprint 6319-537B-7167; full recompute starts
+2026-10-25T06:00:14Z Mac full recompute done
+2026-10-25T11:49:37Z resumed after a permission-classifier outage (06:10-11:45); WAR and GUERRA runs had finished; results and logs pulled with hashes
+2026-10-25T11:55:57Z ledgers built: 0 discrepancies, 960 control flags (none from the round-3 debugger); r1/r2/r3 fingerprints verified on war and guerra

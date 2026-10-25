@@ -1,0 +1,6 @@
+predictor-debugger round-3 verify · Windows AMD64 · Python 3.12.10 · numpy 1.26.4
+r3test: 40 trajectories in 178.2 s
+r3ood5: 20 trajectories in 88.8 s
+r3ood6: 20 trajectories in 88.4 s
+r3roll: 40 trajectories of 20 steps in 353.6 s
+regenerated 120 files, 0 bit-identical to round3/MANIFEST.sha256
