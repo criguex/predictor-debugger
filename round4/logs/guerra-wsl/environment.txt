@@ -1,0 +1,6 @@
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+6.18.54.1-microsoft-standard-WSL2
+ldd (Ubuntu GLIBC 2.39-0ubuntu8.8) 2.39
+16
+uv 0.11.18 (x86_64-unknown-linux-gnu)
+0af669c3bf9a37aa5ad1f7f870fb3b15fe31eb78

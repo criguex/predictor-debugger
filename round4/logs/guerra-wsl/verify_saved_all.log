@@ -1,0 +1,19 @@
+3.9.25 1.26.4 ('glibc', '2.39')
+tests/test_checks.py tests/test_checks.py: all checks passed
+round2/test_checks2.py round2/test_checks2.py: all checks passed
+round3/test_checks3.py round3/test_checks3.py: all checks passed
+round4/test_checks4.py round4/test_checks4.py: all checks passed
+mac     verify.py         fingerprint: EEC9-09E0-F77D
+mac     round2/verify.py  fingerprint: D506-F58F-3838
+mac     round3/verify.py  fingerprint: 6319-537B-7167
+mac     round4/verify.py  fingerprint: 681D-143B-64A3
+war     verify.py         fingerprint: EEC9-09E0-F77D
+war     round2/verify.py  fingerprint: D506-F58F-3838
+war     round3/verify.py  fingerprint: 6319-537B-7167
+war     round4/verify.py  fingerprint: 681D-143B-64A3
+guerra  verify.py         fingerprint: EEC9-09E0-F77D
+guerra  round2/verify.py  fingerprint: D506-F58F-3838
+guerra  round3/verify.py  fingerprint: 6319-537B-7167
+guerra  round4/verify.py  fingerprint: 681D-143B-64A3
+
+[exited with code 0]
