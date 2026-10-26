@@ -57,7 +57,7 @@ Lo que tardó el recálculo del depurador en cada máquina:
 | 3 | 1.956 s (2 procesos) | 3.436 s (6) | 9.457 s (6) | [round3/RESULTS.md](round3/RESULTS.md), *Reproducibilidad entre máquinas* |
 | 4 | 3.966 s ≈ 1,1 h (5 procesos) | 15.734 s ≈ 4,4 h (6) | 31.223 s ≈ 8,7 h (8) | [round4/RESULTS.md](round4/RESULTS.md), *Reproducibilidad entre máquinas* |
 
-En Linux (WSL2 en GUERRA), la ronda 1 completa tardó unos 7 min: 2 min 52 s de recálculo y 4 min 8 s de regenerar val, test y OOD ([logs/linux/run.log](logs/linux/run.log)). Dio los mismos veredictos y la huella `EEC9-09E0-F77D` ([logs/linux/verify_saved.log](logs/linux/verify_saved.log)). El workflow `reproduce` (manual o con un tag `v*`) hace este nivel en un runner de GitHub para las rondas 1 y 2.
+En Linux (WSL2 en GUERRA), la ronda 1 completa tardó unos 7 min: 2 min 52 s de recálculo y 4 min 8 s de regenerar val, test y OOD ([logs/linux/run.log](logs/linux/run.log)). Dio los mismos veredictos y la huella `EEC9-09E0-F77D` ([logs/linux/verify_saved.log](logs/linux/verify_saved.log)). El workflow `reproduce` (manual o con un tag `v*`) hace este nivel en un runner de GitHub para las rondas 1 y 2. En su primera corrida ([run 40267731741](https://github.com/criguex/predictor-debugger/actions/runs/40267731741)), con la descarga incluida, el job de la ronda 1 tardó 6 min 33 s y el de la ronda 2, 17 min 47 s; los dos dieron los mismos veredictos y las huellas `EEC9-09E0-F77D` y `D506-F58F-3838`.
 
 ### (c) Regenerar los datos y reentrenar
 
