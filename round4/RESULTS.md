@@ -12,15 +12,15 @@ Corrida el 2026-10-25 (UTC) bajo `round4/DESIGN.md`, sin enmiendas. Las rondas 1
 | **Primer dato de evaluación** (generación de `r4test`, `r4ood5`, `r4ood6`, `r4roll`) | — | **14:26:06**, terminó 14:31:23 |
 | Inferencia y rollouts de P2 en WAR | `f416411` | 14:35–14:52 |
 | Corrida del depurador en el Mac (`--jobs 5`) | `6d69535` | 14:53–16:02 |
-| Recomputación completa en el Mac (`verify.py --jobs 5`) | | RECOMP |
-| Corridas en WAR y GUERRA | `REMOTE_COMMIT` | REMOTE_TIMES |
-| Ledgers, verificación de las rondas 1–3 en remoto, limpieza | | CLEAN_TIME |
+| Recomputación completa en el Mac (`verify.py --jobs 5`) | | 16:04–17:13 |
+| Corridas en WAR y GUERRA | `92a98f3` (WAR) y el commit de cierre (GUERRA) | WAR 14:53–19:35; GUERRA 14:53–00:17 (26-oct) |
+| Ledgers, verificación de las rondas 1–3 en remoto, limpieza | | 00:20–00:30 (26-oct) |
 
 Los criterios H17–H20 los fijó el autor antes del piloto; el piloto solo eligió la reconstrucción primaria (`fp3`, ya elegida en una prueba de cinco pasos sobre `r3roll` antes del piloto completo). Tiempos de cada etapa en `round4/logs/mac/timeline.log` y `round4/logs/mac/orchestration.log`.
 
 ## Hipótesis prerregistradas (datos nuevos)
 
-`r4test` = semillas 4000–4039 (k₀ = 3, 400 pasos por predictor); `r4ood5` = 4100–4119 (k₀ = 5) y `r4ood6` = 4200–4219 (k₀ = 6), 200 pasos cada uno; `r4roll` = 4300–4339 (k₀ = 3), rollouts de 20 pasos. MACHINES_SENTENCE
+`r4test` = semillas 4000–4039 (k₀ = 3, 400 pasos por predictor); `r4ood5` = 4100–4119 (k₀ = 5) y `r4ood6` = 4200–4219 (k₀ = 6), 200 pasos cada uno; `r4roll` = 4300–4339 (k₀ = 3), rollouts de 20 pasos. Mismo veredicto, mismos números (a 6 decimales), en Mac, WAR y GUERRA.
 
 ### H17–H20 (lo nuevo)
 
@@ -72,7 +72,7 @@ La celda más justa es P2s1 contra ΣG: +0,121 con extremo inferior 0,067 (el cr
 
 Pisos de momento (D3 / G / G6 / G′): `r4test` 1e-2 / 1e-4 / 1e-6 / 1e-5; `r4ood5` ninguno / 1e-4 / 1e-6 / 1e-4; `r4ood6` ninguno / 1e-4 / 1e-6 / 3,2e-4: los mismos de la ronda 3.
 
-FINGERPRINT_PARAGRAPH
+`round4/verify.py` imprime la huella **681D-143B-64A3** en las tres máquinas: en el Mac re-aplicando umbrales (`round4/logs/mac/verify_saved.log`) y recalculando todo desde las predicciones (`round4/logs/mac/verify_recompute.log`, sin tocar: no tuvo líneas de aviso), y en WAR y GUERRA sobre sus propios resultados (`round4/logs/{war,guerra}/verify_saved.log`). Las huellas de las rondas 1–3 (EEC9-09E0-F77D, D506-F58F-3838, 6319-537B-7167) se verificaron en las tres máquinas con sus resultados guardados (`round4/logs/*/verify_r{1,2,3}_saved.log`).
 
 ## Qué dice y qué no
 
@@ -97,15 +97,45 @@ Proyectar el inicio importa para el defecto (la parte no solenoidal de la salida
 
 ## Ledgers
 
-LEDGER_SECTION
+- `round4/ledgers/discrepancies.jsonl`: **0 entradas** (todas las marcas por paso de `KEYS`, cada detección del barrido y cada registro de alarma A y Ê de rollout, entre las tres máquinas).
+- `round4/ledgers/false_positives.jsonl`: **948 entradas = 316 por máquina, idénticas en las tres, 0 nuevas**. Ninguna es de un chequeo del depurador (D1, D3, D2″, G′, alarma A o alarma Ê: 0). Por máquina: 206 del D2 viejo (`r4ood5` 46, `r4ood6` 160), 40 de G (`r4ood6`, paso 0) y 70 de G6 (`r4ood5` 30, `r4ood6` 40). Cada una trae su explicación comprobada en el mismo paso (campo `explained_by`): D2′ < 0 en las de D2 y G′ < 0 en las de G y G6, el mecanismo de cuadratura que la ronda 3 documentó. En el archivo quedan `open`, como pide el diseño; contadas así: 948 explicadas automáticamente, 0 nuevas.
+- Ningún rollout de P0 ni P0f32 dio alarma (A ni Ê) ni marca de D1, D3, D2″ o G′ en sus 1.600 pasos. Ê llega como mucho a 6,7e-8 en esos rollouts; τ_Ê = L = 0,05 (el máximo de validación fue 6,1e-8).
 
 ## Reproducibilidad entre máquinas
 
-REPRO_SECTION
+| | Mac | WAR | GUERRA |
+| --- | --- | --- | --- |
+| Splits de la ronda 4 regenerados, bit-idénticos al Mac | (canónicos) | 0 / 120 | 0 / 120 |
+| Diferencia absoluta máxima contra los archivos del Mac | | 7,8e-16 | 7,8e-16 |
+| Tiempo del depurador (todo) | 3.966 s (5 procesos) | 15.734 s (6 procesos) | 31.223 s (8 procesos) |
+| `test_checks.py`, `test_checks2.py`, `test_checks3.py`, `test_checks4.py` | pasan | pasan | pasan |
+| Huella r1 / r2 / r3 / r4 | EEC9-09E0-F77D / D506-F58F-3838 / 6319-537B-7167 / 681D-143B-64A3 | igual | igual |
+
+La mayor diferencia entre máquinas en cualquier estadístico fue 5,7e-14 (`dhat_err_r4` en un paso de P0f32, donde el denominador es un defecto de redondeo float32); en Ê 1,1e-16, en S 1,3e-15, en λ 4,4e-16, en D3 4,4e-16. numpy 1.26.4 en las tres; Python 3.9.6 (Mac), 3.12.10 (WAR, torch 2.7.0+cu128 para la inferencia), 3.12.3 (GUERRA).
+
+**Cambio de entorno en GUERRA durante la corrida (hecho por el coordinador, no por esta corrida, sin tocar datos ni código):** hacia las 18:55 UTC Windows tenía los 8 workers en los E-cores 12–15 a ~50 % de CPU cada uno; el coordinador fijó la afinidad de los 9 procesos a 0x0FFF (P-cores, lógicos 0–11) y desactivó el power throttling para `python.exe` (`powercfg /powerthrottling disable`; script `C:\ADN\pcores.ps1`, fuera de la carpeta del experimento, que no se tocó al limpiar). Después cada worker midió 0,97–0,98 CPU. Mismo binario e ISA: los resultados de GUERRA son iguales a los del Mac y WAR hasta 5,7e-14 y la huella no cambió.
+
+Transferencias (`round4/logs/transfers.tsv`, 1.340 filas, SHA-256 en ambos extremos):
+
+| Dirección | Archivos | Bytes | Reintentos | Fallidos |
+| --- | --- | --- | --- | --- |
+| Mac → WAR | 441 | 3,43 GB | 652 | 163 (primer envío, reenviados y verificados) |
+| Mac → GUERRA | 537 | 5,34 GB | 0 | 0 |
+| WAR → Mac | 345 | 3,81 GB | 0 | 0 |
+| GUERRA → Mac | 17 | 28 MB | 0 | 0 |
+
+Los 163 fallidos de Mac → WAR son del primer envío: las carpetas remotas no existían porque `tools/remote.py`, que las crea, aún no estaba allí; las cinco tentativas de cada archivo fallaron y quedaron registradas. El segundo envío, segundos después, verificó los 220 archivos. En GUERRA se copió `tools/remote.py` con un `scp` simple antes del envío con hash (y luego también se verificó).
+
+`C:\ADN\pd-exp-r4\` se borró en WAR (681 archivos, 6,9 GB) y GUERRA (673 archivos, 6,7 GB) después de traer y verificar todo, junto con el `.ps1` temporal de `C:\Users\Public` (`round4/logs/{war,guerra}/cleanup.log`). Espacio libre en C:: WAR 60,07 GB al empezar y 59,45 GB después; GUERRA 92,36 GB y 91,91 GB; la diferencia no es de esta carpeta, que ya no existe. No se tocó nada más en esas máquinas; la fábrica de vídeo siguió en pausa.
 
 ## Lo que no salió como se diseñó, o no se hizo
 
-NOTDONE_SECTION
+- Nada falló. El margen más justo es H17-D en P2s1 contra ΣG (+0,121, IC inferior +0,067) y H20 (0,9875 con IC inferior 0,969, por la falta de anticipación de una alarma calibrada).
+- El piloto ya mostraba el resultado con márgenes parecidos sobre `r3roll`; los criterios no se movieron por eso, pero el piloto sí fijó `fp3` como primaria (decisión tomada antes, en una prueba de cinco pasos).
+- GUERRA tardó 8,7 h (la mitad con los workers en E-cores, ver arriba) y WAR 4,4 h, contra 1,1 h del Mac: el costo de Ê (tangente del solver) se nota en Windows más que en el Mac.
+- No se probaron otros regímenes (ν menor, caótico), horizontes más largos ni redes entrenadas para rollouts. La opción A (Lyapunov) es débil aquí por construcción: el régimen contrae.
+- El primer envío a WAR falló por carpetas inexistentes (arriba). Los logs se dejaron tal como salieron; ninguno se editó.
+- Los resultados por máquina pesan ~29 MB (`sweep.json` 13 MB) y quedan en git como en las rondas anteriores, para que `round4/verify.py --saved` funcione desde un clon sin datos.
 
 ## Límites (de DESIGN, sin cambios)
 

@@ -1,6 +1,6 @@
 ---
 name: debug-predictor-fisica
-description: Re-verify or rerun the pre-registered physics debugger for a learned 3D Navier–Stokes predictor (sqe-private/predictor-debugger). Use when asked to check, re-verify, reproduce or rerun the predictor-debugger evidence, its verdicts (H1–H4, round 2 H1–H8, round 3 H1–H16) or its fingerprints. Never changes thresholds, data, predictions or results.
+description: Re-verify or rerun the pre-registered physics debugger for a learned 3D Navier–Stokes predictor (sqe-private/predictor-debugger). Use when asked to check, re-verify, reproduce or rerun the predictor-debugger evidence, its verdicts (H1–H4, round 2 H1–H8, round 3 H1–H16, round 4 H17–H20) or its fingerprints. Never changes thresholds, data, predictions or results.
 ---
 
 # debug-predictor-fisica
@@ -8,13 +8,14 @@ description: Re-verify or rerun the pre-registered physics debugger for a learne
 Round 1: `DESIGN.md` (pre-registration, amendments 1–5) → `thresholds.json` → `results/` → `RESULTS.md`.
 Round 2: `round2/DESIGN.md` → `round2/thresholds.json` → `round2/results/` → `round2/RESULTS.md`.
 Round 3: `round3/DESIGN.md` → `round3/thresholds.json` → `round3/results/` → `round3/RESULTS.md`.
+Round 4: `round4/DESIGN.md` → `round4/thresholds.json` → `round4/results/` → `round4/RESULTS.md`.
 The repo is `~/Projects/sqe-private/predictor-debugger`. Everything runs from the repo root with `uv run --locked ...`
 (`pyproject.toml` + `uv.lock`: Python 3.9, numpy==1.26.4; torch only in the `train` group).
 Fallback without uv: `.venv/bin/python ...` (numpy==1.26.4 only; `python3 -m venv .venv && .venv/bin/pip install numpy==1.26.4`).
 
 ## Hard rules
 
-- Do not edit `DESIGN.md`, `thresholds.json`, `results/`, `ledgers/`, `data/`, `preds/` or `checkpoints/`, nor their `round2/` and `round3/` counterparts. The test split has been evaluated, so no threshold, split, check or criterion may change.
+- Do not edit `DESIGN.md`, `thresholds.json`, `results/`, `ledgers/`, `data/`, `preds/` or `checkpoints/`, nor their `round2/`, `round3/` and `round4/` counterparts. The test split has been evaluated, so no threshold, split, check or criterion may change.
 - Write anything new to a scratch directory, never over the evidence.
 - Report a mismatch as a mismatch. Do not "fix" it by regenerating the canonical files.
 
@@ -59,6 +60,18 @@ Use a scratch environment so the repo's `.venv` is untouched: `export UV_PROJECT
 3. Full, one action (needs `round3/data/` and `round3/preds/`, about 35 minutes on the Mac with `--jobs 2`): `uv run --locked round3/verify.py --jobs 2`.
 4. Compare with `round3/RESULTS.md`: H1–H16 verdicts (PASS, FAIL or NON-DISCRIMINATIVE for H7, H13, H14, H15), the detection-floor table, and the round-3 fingerprint printed there.
    Regenerating the round-3 splits: `uv run --locked round3/verify.py --regenerate <scratch>/regen --report <scratch>/regeneration.json`.
+
+## Mode 5 · round 4 (error transport along rollouts)
+
+Round 4 lives in `round4/` and reads rounds 1–3 (validation data, thresholds, checkpoints) through the link `round4/r1` → repo root
+(`ln -s .. round4/r1` if missing). Data and predictions are not in git; hashes are in `round4/MANIFEST.sha256`.
+Use a scratch environment: `export UV_PROJECT_ENVIRONMENT=<scratch>/venv`.
+
+1. `uv run --locked round4/test_checks4.py` must print `all checks passed` (tangent-linear map against finite differences of the solver step, defect reconstruction, a synthetic rollout).
+2. Quick: `uv run --locked round4/verify.py --saved mac` (and `--saved war`, `--saved guerra`).
+3. Full, one action (needs `round4/data/` and `round4/preds/`; about 1.5 h on the Mac with `--jobs 4`): `uv run --locked round4/verify.py --jobs 4`.
+4. Compare with `round4/RESULTS.md`: the sanity block (H1–H7, H9–H13 on fresh splits), H17 (PASS, FAIL or NON-DISCRIMINATIVE), H18, H19, H20, and the round-4 fingerprint printed there.
+   Regenerating the round-4 splits: `uv run --locked round4/verify.py --regenerate <scratch>/regen --report <scratch>/regeneration.json`.
 
 ## Output
 
