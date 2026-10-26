@@ -42,7 +42,7 @@ El depurador revisa pares (u₀, u₁): un estado del fluido y la predicción de
 
    `magnitud` = ‖u₁ − exacto‖ / ‖exacto‖, que es 0 para los correctos.
 
-4. **Compromiso.** Calcular `shasum -a 256 etiquetas.json` y mandarnos **solo ese hash** por correo o WhatsApp, antes de enviar nada más. Así no se pueden cambiar las etiquetas después.
+4. **Compromiso.** Calcular `shasum -a 256 etiquetas.json`, mandarme ese hash y publicarlo en un issue público de este repositorio (https://github.com/criguex/predictor-debugger/issues) antes de entregar los pares. Así cualquiera puede comprobar que las etiquetas no cambiaron después.
 
 5. **Entrega.** Mandar la carpeta `pares/` junto con su lista de hashes (`shasum -a 256 pares/*.npz > pares.sha256`).
 
