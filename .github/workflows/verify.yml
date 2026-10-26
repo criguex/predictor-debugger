@@ -6,6 +6,19 @@ on:
   workflow_dispatch:
 
 jobs:
+  docs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: the documented animation export runs with its defaults
+        run: sh docs/scenes/export.sh --check
+      - name: every repo path the READMEs point to exists
+        run: |
+          missing=0
+          for f in $(grep -ohE '\]\((docs|tools|round[0-9]|logs|results)/[^)#]+\)' README.md README.en.md | sed -E 's/^\]\(//; s/\)$//' | sort -u); do
+            [ -e "$f" ] || { echo "missing: $f"; missing=1; }
+          done
+          exit $missing
   saved:
     runs-on: ubuntu-24.04
     timeout-minutes: 60

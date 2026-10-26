@@ -1,8 +1,17 @@
 #!/bin/sh
 set -e
 cd "$(dirname "$0")"
-SCENE="${1:-how-it-works}"
-SECONDS_TOTAL="${2:-13}"
+if [ "$1" = "--check" ]; then
+  CHECK=1
+  shift
+fi
+SCENE="${1:-explained}"
+SECONDS_TOTAL="${2:-12}"
+[ -f "$SCENE.html" ] || { echo "export.sh: no existe docs/scenes/$SCENE.html" >&2; exit 1; }
+if [ -n "$CHECK" ]; then
+  echo "export.sh: $SCENE.html, ${SECONDS_TOTAL}s -> docs/assets/$SCENE.gif y .mp4"
+  exit 0
+fi
 CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 FPS=12
 rm -rf frames && mkdir frames
