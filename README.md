@@ -1,5 +1,7 @@
 # predictor-debugger
 
+![predictor-debugger: depurador físico para predicciones de fluidos 3D, con las huellas de las rondas 1 a 4](docs/assets/banner.svg)
+
 Soy Cristian Guerra, ingeniero de QA en Medellín. Este repositorio contiene un depurador que comprueba si las predicciones de una red neuronal FNO para un fluido 3D respetan la incompresibilidad, el balance de energía y la ecuación de evolución. Lo evalúo con hipótesis y umbrales prerregistrados, y reporto también los controles que no pasan. Las rondas 1 a 4 documentan esas pruebas y sus resultados.
 
 ## Cómo trabajo
@@ -14,6 +16,8 @@ Antes de generar los datos de prueba, dejo las hipótesis y los umbrales en un c
 | 2 | Un medidor de error G, una comprobación de energía más sensible y predicciones con varios niveles de error. | G ordenó el error dentro de cada predictor y el nuevo balance evitó las marcas del control exacto. H8 pasó al juntar niveles de error, pero no distinguió G de D3: D3 también ordenó ese conjunto. | `D506-F58F-3838` |
 | 3 | Pisos de detección, una alarma G′ y rollouts de 20 pasos. | H14 **FALLÓ**: la suma de G no ordenó suficientemente bien el error acumulado entre trayectorias, y el comparador ΣD3 cumplió el criterio en tres de cuatro redes. | `6319-537B-7167` |
 | 4 | Transporte de los defectos de predicción a lo largo de rollouts de 20 pasos. | H17 pasó en las cuatro redes: transportar la dirección del defecto ordenó mejor el error de rollout que sumar normas locales. La huella se repitió en las tres máquinas. | `681D-143B-64A3` |
+
+![Hipótesis preregistradas por ronda: R1 5/5, R2 9/9, R3 16/17 con H14 fallida, R4 18/18](docs/assets/rondas.svg)
 
 ## Reproducir
 
@@ -61,6 +65,10 @@ En Linux (WSL2 en GUERRA), la ronda 1 completa tardó unos 7 min: 2 min 52 s de 
 
 Las cuatro rondas completas se recalcularon desde `data-v1` en otra máquina Linux, sobre v1.0 y sin reentrenar. Lo ejecutó un asistente de IA bajo mi dirección, así que no es una revisión independiente. Dio las cuatro huellas y los mismos veredictos, incluido el fallo de H14 en la ronda 3. El paquete trae logs, comandos, entorno y resultados, y declara sus limitaciones: [release repro-ia-20261026](https://github.com/criguex/predictor-debugger/releases/tag/repro-ia-20261026).
 
+![Las mismas cuatro huellas en seis entornos: Mac, WAR, GUERRA, Linux WSL2, GitHub CI y Linux IA, recalculadas o comprobadas sobre resultados guardados](docs/assets/reproduccion.svg)
+
+Las figuras salen de los veredictos guardados con `python3 tools/figuras.py`.
+
 ### (c) Regenerar los datos y reentrenar
 
 Los datos se regeneran desde las semillas con el solver de `vendor/`, y cada `verify.py` compara el resultado con su manifiesto:
@@ -80,6 +88,12 @@ Reentrenar la FNO requiere una GPU con CUDA y el grupo `train` (torch 2.7.0): `u
 
 Invito a quien quiera participar a preparar pares de estados correctos y saboteados siguiendo [round5/KIT.md](round5/KIT.md). El kit explica cómo comprometer las etiquetas antes de entregar los pares.
 
+## Qué me contradiría
+
+- **Ronda 5, a ciegas.** El depurador deja pasar sin aviso un par saboteado por otra persona, o marca como malo un estado correcto. Las etiquetas se comprometen con su hash antes de que yo vea los pares.
+- **Otro régimen.** En flujos caóticos, horizontes largos o redes entrenadas para rollout, transportar el defecto (H17) deja de ordenar el error mejor que sumar normas locales.
+- **Otra persona.** Alguien que no soy yo descarga `data-v1` en su máquina y obtiene otra huella u otros veredictos.
+
 ## Límites
 
 El alcance es una caja periódica de 32³, campos iniciales suaves, un horizonte corto, una arquitectura y ningún forzamiento. Esto no dice nada sobre el problema de Clay, la prueba de OpenAI ni la turbulencia real. Los datos y predicciones ocupan alrededor de 20 GB y no están en git; están en el release `data-v1` y el repositorio conserva sus hashes. Las tres máquinas son mías, así que esto no es una reproducción independiente. Escribí y ejecuté este trabajo con ayuda de asistentes de IA, bajo mi dirección.
@@ -88,4 +102,4 @@ Mi proyecto hermano está en [scientific-qa-evidence](https://criguex.github.io/
 
 ## In English
 
-I am Cristian Guerra, a QA engineer in Medellín. This repository contains a physics debugger for 3D fluid predictions from a Fourier neural operator. I test it through preregistered rounds and report failures as well as successes. The results are limited to the setup described here, and the three machines are mine. To reproduce: `verify.py --saved` re-checks the saved verdicts in minutes without data; `tools/fetch_data.py` downloads the data and predictions (about 5 GB per round) from the `data-v1` release and checks them against the manifests, and then each round's `verify.py` recomputes everything; regenerating the data and retraining needs a GPU and is not bit-identical across systems (differences up to 8.9e-16), while the verdicts and fingerprints match.
+I am Cristian Guerra, a QA engineer in Medellín. This repository contains a physics debugger for 3D fluid predictions from a Fourier neural operator. I test it through preregistered rounds and report failures as well as successes. The results are limited to the setup described here, and the three machines are mine. To reproduce: `verify.py --saved` re-checks the saved verdicts in minutes without data; `tools/fetch_data.py` downloads the data and predictions (about 5 GB per round) from the `data-v1` release and checks them against the manifests, and then each round's `verify.py` recomputes everything; regenerating the data and retraining needs a GPU and is not bit-identical across systems (differences up to 8.9e-16), while the verdicts and fingerprints match. What would prove me wrong: a blind round-5 pair that the debugger misses or a correct state it flags, H17 failing in chaotic or long-horizon regimes, or someone else getting a different fingerprint from `data-v1`.
