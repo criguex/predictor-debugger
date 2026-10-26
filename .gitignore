@@ -5,3 +5,5 @@ data/
 preds/
 checkpoints/
 round2/regen/
+*.tar
+*.tar.part
