@@ -2,6 +2,32 @@
 
 ![predictor-debugger: depurador físico para predicciones de fluidos 3D, con las huellas de las rondas 1 a 4](docs/assets/banner.svg)
 
+## Explicado para un niño de 8 años
+
+Una red neuronal es un programa que aprendió a adivinar cómo se va a mover el agua o el aire un momentico después. Adivina rápido, pero ¿y si se equivoca? Este proyecto es un revisor que le corrige la tarea con las reglas de la física: el agua no se deja apretar en menos espacio, la energía no puede aparecer de la nada y cada paso tiene que seguir la ecuación del movimiento. Antes de ver los resultados dejo escritas las preguntas y la nota para pasar, así no puedo hacer trampa después. Y cuando una prueba falla, también la publico.
+
+![Historia ilustrada: una red neuronal adivina cómo se mueve el agua, un revisor le califica la tarea con tres reglas de la física, la apuesta H14 de la ronda 3 falla y se publica, y la idea nueva H17 de la ronda 4 pasa en las cuatro redes](docs/assets/explained.gif)
+
+### Un ejemplo real: H14, la apuesta que falló
+
+- **Imagina** que la red no adivina un solo momento sino 20 seguidos, como un pronóstico del clima para 20 ratos. Cada error pequeño se arrastra al paso siguiente.
+- **La apuesta (H14, ronda 3):** si sumo las marcas de error que pone el revisor en cada paso, esa suma debería ordenar qué pronósticos terminan peor. La nota para pasar quedó escrita antes: un promedio de al menos 0,7 en las cuatro redes.
+- **Qué pasó:** en el paso 1 el orden era casi perfecto (0,99), pero se fue dañando hasta 0,45–0,73 en el paso 20, y una de las cuatro redes sacó 0,635. **H14 falló** y no se cambió nada para arreglarlo. Lo que aprendí: el revisor sabe cuánto se equivoca la red en cada paso, pero no hacia dónde la llevan esos errores.
+- **Qué ganamos:** el fallo de H14 es el punto de partida de la ronda 4. Ahí probé una idea nueva, H17: llevar la dirección de cada error a lo largo de los 20 pasos en vez de sumar tamaños. Esa pasó en las cuatro redes.
+
+### Palabras difíciles
+
+| Palabra | Qué significa |
+| --- | --- |
+| **Red neuronal (FNO)** | Un programa que aprende de ejemplos a adivinar. FNO es el tipo de red que se usa aquí. |
+| **Incompresibilidad** | El agua no se deja apretar: lo que entra a un pedacito tiene que salir. |
+| **Prerregistrar** | Escribir las preguntas y la nota para pasar antes de ver los resultados. |
+| **Hipótesis (H14, H17)** | Una apuesta con nombre que puede salir bien o mal. |
+| **Rollout** | Dejar que la red adivine muchos pasos seguidos usando sus propias respuestas. |
+| **Huella** | Un código corto, como `EEC9-09E0-F77D`, que resume los veredictos de una ronda: si algo cambia, cambia la huella. |
+
+## Qué es
+
 Soy Cristian Guerra, ingeniero de QA en Medellín. Este repositorio contiene un depurador que comprueba si las predicciones de una red neuronal FNO para un fluido 3D respetan la incompresibilidad, el balance de energía y la ecuación de evolución. Lo evalúo con hipótesis y umbrales prerregistrados, y reporto también los controles que no pasan. Las rondas 1 a 4 documentan esas pruebas y sus resultados.
 
 ## Cómo trabajo
@@ -67,7 +93,7 @@ Las cuatro rondas completas se recalcularon desde `data-v1` en otra máquina Lin
 
 ![Las mismas cuatro huellas en seis entornos: Mac, WAR, GUERRA, Linux WSL2, GitHub CI y Linux IA, recalculadas o comprobadas sobre resultados guardados](docs/assets/reproduccion.svg)
 
-Las figuras salen de los veredictos guardados con `python3 tools/figuras.py`.
+Las figuras salen de los veredictos guardados con `python3 tools/figuras.py`. La animación de arriba sale de `docs/scenes/explained.html` con `docs/scenes/export.sh`.
 
 ### (c) Regenerar los datos y reentrenar
 

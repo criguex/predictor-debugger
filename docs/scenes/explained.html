@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=block"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 960px;
+        height: 540px;
+        overflow: hidden;
+        background: #071b2b;
+      }
+      body {
+        font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+        color: #f4f7f5;
+        position: relative;
+        background-image:
+          linear-gradient(rgba(85, 223, 189, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(85, 223, 189, 0.06) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 8px;
+        height: 540px;
+        background: #55dfbd;
+      }
+      .top {
+        position: absolute;
+        left: 36px;
+        top: 22px;
+        font-size: 15px;
+        color: #abc0c8;
+        font-weight: 600;
+      }
+      svg.stage {
+        position: absolute;
+        left: 0;
+        top: 50px;
+      }
+      .cap {
+        position: absolute;
+        left: 36px;
+        right: 36px;
+        top: 432px;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.2;
+        opacity: 0;
+      }
+      .m {
+        color: #55dfbd;
+      }
+      .c {
+        color: #fb8176;
+      }
+      .g {
+        color: #ffc56e;
+      }
+      .dots {
+        position: absolute;
+        left: 36px;
+        bottom: 18px;
+      }
+      .dots i {
+        display: inline-block;
+        width: 26px;
+        height: 6px;
+        border-radius: 3px;
+        background: #214456;
+        margin-right: 6px;
+      }
+      .dots i.on {
+        background: #55dfbd;
+      }
+      .sig {
+        position: absolute;
+        right: 36px;
+        bottom: 14px;
+        font-size: 13px;
+        color: #55dfbd;
+        font-weight: 600;
+      }
+      text {
+        font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+      }
+      .mono {
+        font-family: 'JetBrains Mono', Menlo, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar"></div>
+    <div class="top">predictor-debugger · explained</div>
+    <svg class="stage" width="960" height="380" viewBox="0 0 960 380">
+      <defs>
+        <symbol id="robot" viewBox="0 0 100 130">
+          <line x1="50" y1="4" x2="50" y2="20" stroke="#55DFBD" stroke-width="4" />
+          <circle cx="50" cy="6" r="6" fill="#55DFBD" />
+          <rect
+            x="14"
+            y="20"
+            width="72"
+            height="54"
+            rx="14"
+            fill="#0D2638"
+            stroke="#55DFBD"
+            stroke-width="4"
+          />
+          <circle cx="36" cy="46" r="7" fill="#55DFBD" />
+          <circle cx="64" cy="46" r="7" fill="#55DFBD" />
+          <path
+            d="M38 62 Q50 68 62 62"
+            stroke="#55DFBD"
+            stroke-width="4"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <rect
+            x="24"
+            y="80"
+            width="52"
+            height="46"
+            rx="10"
+            fill="#123448"
+            stroke="#214456"
+            stroke-width="3"
+          />
+        </symbol>
+        <symbol id="person" viewBox="0 0 100 130">
+          <circle cx="50" cy="32" r="24" fill="#ABC0C8" />
+          <circle cx="42" cy="30" r="3.5" fill="#071B2B" />
+          <circle cx="58" cy="30" r="3.5" fill="#071B2B" />
+          <path
+            d="M41 40 Q50 46 59 40"
+            stroke="#071B2B"
+            stroke-width="3"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <rect
+            x="18"
+            y="62"
+            width="64"
+            height="64"
+            rx="22"
+            fill="#123448"
+            stroke="#214456"
+            stroke-width="3"
+          />
+        </symbol>
+        <marker
+          id="ar"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto"
+        >
+          <path d="M0 0L10 5L0 10z" fill="#55DFBD" />
+        </marker>
+      </defs>
+      <g id="b1">
+        <rect x="70" y="90" width="240" height="220" rx="16" fill="#0D2638" stroke="#214456" stroke-width="2" />
+        <g fill="none" stroke="#55DFBD" stroke-width="5" stroke-linecap="round"><path d="M100 150 C150 90 230 210 280 150" /><path d="M100 200 C150 140 230 260 280 200" marker-end="url(#ar)" /><path d="M100 250 C150 190 230 310 280 250" /></g>
+        <text x="190" y="345" font-size="18" fill="#ABC0C8" text-anchor="middle">water or air, in a box</text>
+        <use href="#robot" x="420" y="140" width="130" height="169" />
+        <text x="485" y="340" font-size="18" fill="#ABC0C8" text-anchor="middle">neural network</text>
+        <g id="th"><rect x="590" y="70" width="300" height="100" rx="24" fill="#F4F7F5" /><circle cx="580" cy="185" r="10" fill="#F4F7F5" /><circle cx="560" cy="205" r="6" fill="#F4F7F5" />
+        <text x="740" y="115" font-size="24" font-weight="700" fill="#071B2B" text-anchor="middle">Next moment,</text><text x="740" y="148" font-size="24" font-weight="700" fill="#071B2B" text-anchor="middle">it moves like this!</text></g>
+      </g>
+      <g id="b2">
+        <use href="#person" x="80" y="110" width="160" height="208" />
+        <rect x="340" y="80" width="560" height="230" rx="16" fill="#0D2638" stroke="#214456" stroke-width="2" />
+        <text x="360" y="112" font-size="18" fill="#ABC0C8">the checker's list · rules of physics</text>
+        <text x="420" y="150" font-size="24" fill="#F4F7F5">water can't be squeezed</text><g id="r0"><g transform="translate(390 142)"><circle r="18" fill="#55DFBD" /><path d="M-8 0 L-2 7 L9 -7" stroke="#071B2B" stroke-width="4" fill="none" stroke-linecap="round" /></g></g><text x="420" y="210" font-size="24" fill="#F4F7F5">energy can't appear from nowhere</text><g id="r1"><g transform="translate(390 202)"><circle r="18" fill="#55DFBD" /><path d="M-8 0 L-2 7 L9 -7" stroke="#071B2B" stroke-width="4" fill="none" stroke-linecap="round" /></g></g><text x="420" y="270" font-size="24" fill="#F4F7F5">each step follows the motion rule</text><g id="r2"><g transform="translate(390 262)"><circle r="18" fill="#55DFBD" /><path d="M-8 0 L-2 7 L9 -7" stroke="#071B2B" stroke-width="4" fill="none" stroke-linecap="round" /></g></g>
+      </g>
+      <g id="b3">
+        <rect x="70" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.25" stroke-width="2" /><rect x="111" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.29" stroke-width="2" /><rect x="152" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.33" stroke-width="2" /><rect x="193" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.36" stroke-width="2" /><rect x="234" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.40" stroke-width="2" /><rect x="275" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.44" stroke-width="2" /><rect x="316" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.47" stroke-width="2" /><rect x="357" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.51" stroke-width="2" /><rect x="398" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.55" stroke-width="2" /><rect x="439" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.59" stroke-width="2" /><rect x="480" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.62" stroke-width="2" /><rect x="521" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.66" stroke-width="2" /><rect x="562" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.70" stroke-width="2" /><rect x="603" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.74" stroke-width="2" /><rect x="644" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.78" stroke-width="2" /><rect x="685" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.81" stroke-width="2" /><rect x="726" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.85" stroke-width="2" /><rect x="767" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.89" stroke-width="2" /><rect x="808" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.92" stroke-width="2" /><rect x="849" y="90" width="32" height="32" rx="6" fill="#123448" stroke="#55DFBD" stroke-opacity="0.96" stroke-width="2" />
+        <text x="480" y="160" font-size="18" fill="#ABC0C8" text-anchor="middle">20 guesses in a row · round 3</text>
+        <rect x="110" y="190" width="520" height="140" rx="16" fill="#0D2638" stroke="#FB8176" stroke-width="3" />
+        <text x="130" y="228" font-size="22" font-weight="700" fill="#F4F7F5" class="mono">H14 · the bet</text>
+        <text x="130" y="264" font-size="20" fill="#ABC0C8">adding up the small mistakes shows</text>
+        <text x="130" y="294" font-size="20" fill="#ABC0C8">which forecast ends up worst</text>
+        <g id="x14" transform="translate(740 250)"><circle r="56" fill="#FB8176" /><path d="M-24 -24 L24 24 M24 -24 L-24 24" stroke="#071B2B" stroke-width="14" stroke-linecap="round" /></g>
+        <text id="f14" x="740" y="350" font-size="24" font-weight="700" fill="#FB8176" text-anchor="middle">FAILED</text>
+      </g>
+      <g id="b4">
+        <rect x="110" y="70" width="740" height="110" rx="16" fill="#0D2638" stroke="#55DFBD" stroke-width="3" />
+        <text x="135" y="112" font-size="22" font-weight="700" fill="#F4F7F5" class="mono">H17 · round 4</text>
+        <text x="135" y="150" font-size="20" fill="#ABC0C8">carry the direction of each mistake along the 20 steps</text>
+        <g id="n0"><use href="#robot" x="150" y="200" width="90" height="117" /><g transform="translate(240 215)"><circle r="20" fill="#55DFBD" /><path d="M-9 0 L-2 8 L10 -8" stroke="#071B2B" stroke-width="5" fill="none" stroke-linecap="round" /></g></g><g id="n1"><use href="#robot" x="330" y="200" width="90" height="117" /><g transform="translate(420 215)"><circle r="20" fill="#55DFBD" /><path d="M-9 0 L-2 8 L10 -8" stroke="#071B2B" stroke-width="5" fill="none" stroke-linecap="round" /></g></g><g id="n2"><use href="#robot" x="510" y="200" width="90" height="117" /><g transform="translate(600 215)"><circle r="20" fill="#55DFBD" /><path d="M-9 0 L-2 8 L10 -8" stroke="#071B2B" stroke-width="5" fill="none" stroke-linecap="round" /></g></g><g id="n3"><use href="#robot" x="690" y="200" width="90" height="117" /><g transform="translate(780 215)"><circle r="20" fill="#55DFBD" /><path d="M-9 0 L-2 8 L10 -8" stroke="#071B2B" stroke-width="5" fill="none" stroke-linecap="round" /></g></g>
+        <text x="480" y="350" font-size="20" fill="#ABC0C8" text-anchor="middle">passed on 4 of 4 networks</text>
+      </g>
+    </svg>
+
+    <div class="cap" id="c1">A computer brain guesses how <span class="m">water or air</span> will move next.</div>
+    <div class="cap" id="c2">A checker grades its homework with the <span class="m">rules of physics</span>.</div>
+    <div class="cap" id="c3">Round 3 bet, H14: <span class="c">it failed</span>, and it was published anyway.</div>
+    <div class="cap" id="c4">Round 4 tried a new idea, H17: <span class="m">it passed on all 4</span>.</div>
+
+    <div class="dots"><i id="d1"></i><i id="d2"></i><i id="d3"></i><i id="d4"></i></div>
+    <div class="sig">Cristian Guerra · QA · Medellín</div>
+
+    <script>
+      const t = parseFloat(new URLSearchParams(location.search).get('t') ?? '99');
+      const ease = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
+      const $ = (id) => document.getElementById(id);
+      const vis = (a, b) => Math.min(ease((t - a) / 0.35), b == null ? 1 : ease((b - t) / 0.35));
+      const beats = [
+        [0, 3],
+        [3, 6],
+        [6, 9],
+        [9, null],
+      ];
+      beats.forEach(([a, b], i) => {
+        const o = vis(a, b);
+        $('b' + (i + 1)).style.opacity = o;
+        $('c' + (i + 1)).style.opacity = o;
+        if (t >= a) $('d' + (i + 1)).classList.add('on');
+      });
+      $('th').style.opacity = ease((t - 0.9) / 0.4);
+      for (let i = 0; i < 3; i++) $('r' + i).style.opacity = ease((t - (3.7 + i * 0.6)) / 0.25);
+      $('x14').style.opacity = ease((t - 7.4) / 0.3);
+      $('f14').style.opacity = ease((t - 7.6) / 0.3);
+      for (let i = 0; i < 4; i++) $('n' + i).style.opacity = ease((t - (9.5 + i * 0.35)) / 0.3);
+    </script>
+  </body>
+</html>

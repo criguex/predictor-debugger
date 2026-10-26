@@ -2,6 +2,32 @@
 
 ![predictor-debugger: a physics debugger for 3D fluid predictions, with the fingerprints of rounds 1 to 4](docs/assets/banner.svg)
 
+## Explained like you're 8
+
+A neural network is a program that learned to guess how water or air will move a moment later. It guesses fast, but what if it is wrong? This project is a checker that grades its homework with the rules of physics: water can't be squeezed into less space, energy can't appear from nowhere, and each step has to follow the equation of motion. Before looking at the results, I write down the questions and the passing mark, so I can't cheat later. And when a test fails, I publish it too.
+
+![Illustrated story: a neural network guesses how water moves, a checker grades its homework with three rules of physics, the round 3 bet H14 fails and is published, and the new round 4 idea H17 passes on all four networks](docs/assets/explained.gif)
+
+### A real example: H14, the bet that failed
+
+- **Imagine** the network does not guess one moment but 20 in a row, like a weather forecast for 20 moments. Each small mistake is carried into the next step.
+- **The bet (H14, round 3):** if I add up the error marks the checker gives at each step, that sum should rank which forecasts end up worst. The passing mark was written down beforehand: an average of at least 0.7 on all four networks.
+- **What happened:** at step 1 the ranking was almost perfect (0.99), but it wore down to 0.45–0.73 by step 20, and one of the four networks scored 0.635. **H14 failed**, and nothing was changed to fix it. What I learned: the checker knows how wrong the network is at each step, but not where those mistakes push it.
+- **What we gain:** the H14 failure is where round 4 starts. There I tried a new idea, H17: carry the direction of each mistake along the 20 steps instead of adding up sizes. It passed on all four networks.
+
+### Hard words
+
+| Word | What it means |
+| --- | --- |
+| **Neural network (FNO)** | A program that learns from examples to make guesses. FNO is the kind of network used here. |
+| **Incompressibility** | Water can't be squeezed: whatever flows into a little piece has to flow out. |
+| **Preregister** | Write down the questions and the passing mark before seeing the results. |
+| **Hypothesis (H14, H17)** | A named bet that can come out right or wrong. |
+| **Rollout** | Letting the network guess many steps in a row, using its own answers. |
+| **Fingerprint** | A short code, like `EEC9-09E0-F77D`, that sums up a round's verdicts: if anything changes, the fingerprint changes. |
+
+## What it is
+
 I am Cristian Guerra, a QA engineer in Medellín. This repository contains a debugger that checks whether the predictions of an FNO neural network for a 3D fluid respect incompressibility, the energy balance and the evolution equation. I evaluate it with preregistered hypotheses and thresholds, and I also report the controls that do not pass. Rounds 1 to 4 document those tests and their results.
 
 ## How I work
@@ -67,7 +93,7 @@ The four full rounds were recomputed from `data-v1` on another Linux machine, on
 
 ![The same four fingerprints in six environments: Mac, WAR, GUERRA, Linux WSL2, GitHub CI and Linux AI, recomputed or checked against saved results](docs/assets/reproduccion.svg)
 
-The figures are generated from the saved verdicts with `python3 tools/figuras.py`.
+The figures are generated from the saved verdicts with `python3 tools/figuras.py`. The animation at the top comes from `docs/scenes/explained.html` with `docs/scenes/export.sh`.
 
 ### (c) Regenerate the data and retrain
 
