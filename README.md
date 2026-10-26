@@ -1,4 +1,4 @@
-# predictor-debugger
+[Read in English](README.en.md)
 
 ![predictor-debugger: depurador físico para predicciones de fluidos 3D, con las huellas de las rondas 1 a 4](docs/assets/banner.svg)
 
@@ -102,4 +102,4 @@ Mi proyecto hermano está en [scientific-qa-evidence](https://criguex.github.io/
 
 ## In English
 
-I am Cristian Guerra, a QA engineer in Medellín. This repository contains a physics debugger for 3D fluid predictions from a Fourier neural operator. I test it through preregistered rounds and report failures as well as successes. The results are limited to the setup described here, and the three machines are mine. To reproduce: `verify.py --saved` re-checks the saved verdicts in minutes without data; `tools/fetch_data.py` downloads the data and predictions (about 5 GB per round) from the `data-v1` release and checks them against the manifests, and then each round's `verify.py` recomputes everything; regenerating the data and retraining needs a GPU and is not bit-identical across systems (differences up to 8.9e-16), while the verdicts and fingerprints match. What would prove me wrong: a blind round-5 pair that the debugger misses or a correct state it flags, H17 failing in chaotic or long-horizon regimes, or someone else getting a different fingerprint from `data-v1`.
+The full English version is in [README.en.md](README.en.md).
