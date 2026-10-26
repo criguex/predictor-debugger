@@ -59,6 +59,8 @@ Lo que tardó el recálculo del depurador en cada máquina:
 
 En Linux (WSL2 en GUERRA), la ronda 1 completa tardó unos 7 min: 2 min 52 s de recálculo y 4 min 8 s de regenerar val, test y OOD ([logs/linux/run.log](logs/linux/run.log)). Dio los mismos veredictos y la huella `EEC9-09E0-F77D` ([logs/linux/verify_saved.log](logs/linux/verify_saved.log)). El workflow `reproduce` (manual o con un tag `v*`) hace este nivel en un runner de GitHub para las rondas 1 y 2. En su primera corrida ([run 40267731741](https://github.com/criguex/predictor-debugger/actions/runs/40267731741)), con la descarga incluida, el job de la ronda 1 tardó 6 min 33 s y el de la ronda 2, 17 min 47 s; los dos dieron los mismos veredictos y las huellas `EEC9-09E0-F77D` y `D506-F58F-3838`.
 
+Las cuatro rondas completas se recalcularon desde `data-v1` en otra máquina Linux, sobre v1.0 y sin reentrenar. Lo ejecutó un asistente de IA bajo mi dirección, así que no es una revisión independiente. Dio las cuatro huellas y los mismos veredictos, incluido el fallo de H14 en la ronda 3. El paquete trae logs, comandos, entorno y resultados, y declara sus limitaciones: [release repro-ia-20261026](https://github.com/criguex/predictor-debugger/releases/tag/repro-ia-20261026).
+
 ### (c) Regenerar los datos y reentrenar
 
 Los datos se regeneran desde las semillas con el solver de `vendor/`, y cada `verify.py` compara el resultado con su manifiesto:
