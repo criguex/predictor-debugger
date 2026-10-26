@@ -1,0 +1,48 @@
+name: reproduce
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  round1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.18"
+      - run: df -h .
+      - run: uv run --locked tools/fetch_data.py --rounds r1
+      - run: df -h .
+      - run: uv run --locked python tests/test_checks.py && uv run --locked python tests/test_fetch_data.py
+      - name: full recompute of round 1 from the published data and predictions
+        run: |
+          uv run --locked verify.py | tee out.txt
+          grep -q "verdicts equal to saved results/mac/verdicts.json: True" out.txt
+          grep -q "fingerprint: EEC9-09E0-F77D" out.txt
+
+  round2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.18"
+      - run: df -h .
+      - run: uv run --locked tools/fetch_data.py --rounds r1 --what data
+      - run: uv run --locked tools/fetch_data.py --rounds r2 --what data preds
+      - run: df -h .
+      - run: uv run --locked python round2/test_checks2.py
+      - name: full recompute of round 2 from the published data and predictions
+        run: |
+          uv run --locked round2/verify.py | tee out.txt
+          grep -q "verdicts equal to saved round2/results/mac/verdicts.json: True" out.txt
+          grep -q "fingerprint: D506-F58F-3838" out.txt
