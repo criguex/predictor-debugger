@@ -1,6 +1,19 @@
 {
   "discrepancies": 0,
   "false_positives_by_machine_check_split": {
+    "guerra": {
+      "D2": {
+        "r4ood5": 46,
+        "r4ood6": 160
+      },
+      "G": {
+        "r4ood6": 40
+      },
+      "G6": {
+        "r4ood5": 30,
+        "r4ood6": 40
+      }
+    },
     "mac": {
       "D2": {
         "r4ood5": 46,
@@ -29,6 +42,26 @@
     }
   },
   "hypotheses_by_machine": {
+    "guerra": {
+      "H1": "PASS",
+      "H10": "PASS",
+      "H10b": "PASS",
+      "H11": "PASS",
+      "H12": "PASS",
+      "H13": "PASS",
+      "H17": "PASS",
+      "H18": "PASS",
+      "H19": "PASS",
+      "H1b": "PASS",
+      "H2": "PASS",
+      "H20": "PASS",
+      "H3": "PASS",
+      "H4": "PASS",
+      "H5": "PASS",
+      "H6": "PASS",
+      "H7": "PASS",
+      "H9": "PASS"
+    },
     "mac": {
       "H1": "PASS",
       "H10": "PASS",
@@ -71,6 +104,7 @@
     }
   },
   "machines": [
+    "guerra",
     "mac",
     "war"
   ],
@@ -110,6 +144,7 @@
     "lin_err": 5.551115123125783e-17
   },
   "new_false_positives_by_machine": {
+    "guerra": 0,
     "mac": 0,
     "war": 0
   }

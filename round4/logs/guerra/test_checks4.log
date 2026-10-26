@@ -1,0 +1,4 @@
+tangent-linear map vs finite differences of the solver step (relative): {'1e-03': {'central': 5.722344202791336e-09, 'richardson': 3.223939969789028e-13}, '1e-04': {'central': 5.725556851842053e-11, 'richardson': 3.251482842082243e-12}}
+defect reconstruction error for a 1 % solenoidal kick: {'r6': 0.060624759979925086, 'r4': 0.06024482242592776, 'r6u': 0.06062475997992518, 'fp3': 0.003196352959276495} fixed-point change 0.0013807255865852998
+synthetic rollout E/D4 and oracle/D4 per step: [(0.9999, 0.9998), (1.0, 1.0), (1.0, 1.0), (1.0001, 1.0002), (1.0002, 1.0002)]
+round4/test_checks4.py: all checks passed

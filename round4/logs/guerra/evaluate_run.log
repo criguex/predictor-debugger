@@ -1,0 +1,26 @@
+
+C:\ADN\pd-exp-r4>cd /d C:\ADN\pd-exp-r4 
+
+C:\ADN\pd-exp-r4>set PYTHONDONTWRITEBYTECODE=1 
+
+C:\ADN\pd-exp-r4>set PY=C:\ADN\voz\venv\Scripts\python.exe 
+
+C:\ADN\pd-exp-r4>echo start dom 25/10/2026  9:53:07,78 
+start dom 25/10/2026  9:53:07,78
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe tests\test_checks.py  1>round4\logs\guerra\test_checks.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe round2\test_checks2.py  1>round4\logs\guerra\test_checks2.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe round3\test_checks3.py  1>round4\logs\guerra\test_checks3.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe round4\test_checks4.py  1>round4\logs\guerra\test_checks4.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe round4\verify.py --regenerate round4\regen --report round4\logs\guerra\regeneration.json  1>round4\logs\guerra\regeneration.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe -m round4.evaluate --machine guerra --jobs 8  1>round4\logs\guerra\evaluate.log 2>&1 
+
+C:\ADN\pd-exp-r4>C:\ADN\voz\venv\Scripts\python.exe round4\verify.py --saved guerra  1>round4\logs\guerra\verify_saved.log 2>&1 
+
+C:\ADN\pd-exp-r4>echo done dom 25/10/2026 19:16:11,09 
+done dom 25/10/2026 19:16:11,09
